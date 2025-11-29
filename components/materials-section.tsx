@@ -39,7 +39,7 @@ const features = [
     name: "Locally Owned",
     tagline: "Okanagan proud",
     description: "We're your neighbors, not a faceless corporation. As a locally owned Okanagan business, we're invested in our community and your complete satisfaction.",
-    backgroundImage: "/locally-owned-okanagan-team.jpg",
+    backgroundImage: "/kelowna-aerial.jpg",
     icon: MapPin,
     benefits: ["Family operated", "Community focused", "Personal service"],
   },
@@ -95,7 +95,7 @@ export function MaterialsSection() {
                     alt={`${feature.name} - window blinds feature`}
                     fill
                     className="object-cover"
-                    priority
+                    sizes="(max-width: 768px) 100vw, 100vw"
                   />
                 </motion.div>
               </motion.div>
@@ -225,8 +225,8 @@ export function MaterialsSection() {
           >
             <div className="relative aspect-[3/4] max-w-md ml-auto">
               {/* Decorative frame */}
-              <div className="absolute -inset-6 border-[3px] border-[#8A9A5B]/80" />
-              <div className="absolute -inset-3 border-2 border-[#FAF7F2]/50" />
+              <div className="absolute -inset-6 border-[4px] border-[#8A9A5B]" />
+              <div className="absolute -inset-3 border-[3px] border-[#FAF7F2]/60" />
               
               {/* Feature icon display */}
               <div className="relative h-full flex flex-col items-center justify-center text-center p-12">
@@ -236,8 +236,8 @@ export function MaterialsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-8 border-2 border-[#8A9A5B] flex items-center justify-center">
-                    <ActiveIcon size={40} className="text-[#8A9A5B]" />
+                  <div className="w-24 h-24 mx-auto mb-8 border-[3px] border-[#8A9A5B] flex items-center justify-center">
+                    <ActiveIcon size={40} strokeWidth={2.5} className="text-[#8A9A5B]" />
                   </div>
                   
                   <h3 className="font-display text-4xl text-[#FAF7F2] mb-4">
