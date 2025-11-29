@@ -9,7 +9,7 @@ import { Logo } from "@/components/logo"
 const navLinks = [
   { name: "Products", href: "#products" },
   { name: "About", href: "#about" },
-  { name: "Gallery", href: "#gallery" },
+  { name: "Testimonials", href: "#testimonials" },
   { name: "Contact", href: "#contact" },
 ]
 
