@@ -39,11 +39,13 @@ export function HeroSection() {
                 />
                 {/* Warm overlay */}
                 <motion.div
-                    className="absolute inset-0 bg-gradient-to-b from-[#0F1311]/40 via-[#0F1311]/20 to-[#0F1311]/50"
+                    className="absolute inset-0 bg-gradient-to-b from-[#0F1311]/60 via-[#0F1311]/40 to-[#0F1311]/70"
                     style={{ opacity: overlayOpacity }}
                 />
                 {/* Terracotta gradient accent */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#C4785A]/20 via-transparent to-transparent" />
+                {/* Left-to-right gradient for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/60 via-[#0F1311]/30 to-transparent" />
             </motion.div>
 
             {/* Decorative Elements */}
@@ -223,30 +225,7 @@ export function HeroSection() {
                 </div>
             </motion.div>
 
-            {/* Corner Accent */}
-            <motion.div
-                className="hidden lg:block absolute bottom-24 right-12 z-20"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                    duration: 1,
-                    delay: 1.8,
-                    ease: [0.16, 1, 0.3, 1],
-                }}
-            >
-                <div className="relative">
-                    <div className="w-24 h-24 border border-[#C4785A]/40 rounded-full flex items-center justify-center">
-                        <div className="text-center">
-                            <span className="block text-2xl font-display text-[#FAF7F2]">
-                                15+
-                            </span>
-                            <span className="block text-[10px] uppercase tracking-[0.15em] text-[#FAF7F2]/70">
-                                Years
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
+
         </section>
     );
 }

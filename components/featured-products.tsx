@@ -66,7 +66,7 @@ const featuredProducts = [
   },
 ]
 
-export function FeaturedProducts() {
+export function OurCollection() {
   const [selectedProduct, setSelectedProduct] = useState<typeof featuredProducts[0] | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -98,7 +98,7 @@ export function FeaturedProducts() {
             <div className="flex items-center gap-4 mb-6">
               <span className="block w-12 h-[1px] bg-[#C4785A]" />
               <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
-                Featured Collection
+                Our Collection
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#0F1311] leading-[1.1]">
