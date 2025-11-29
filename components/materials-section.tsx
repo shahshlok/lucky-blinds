@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { Sun, Moon, Thermometer, Check } from "lucide-react"
+import { Sun, Moon, Thermometer, Check, MapPin, Wrench } from "lucide-react"
 
 const features = [
   {
@@ -33,6 +33,24 @@ const features = [
     backgroundImage: "/modern-home-interior-honeycomb-cellular-shades-ene.jpg",
     icon: Thermometer,
     benefits: ["Insulating cells", "Reduced HVAC costs", "Eco-friendly"],
+  },
+  {
+    id: "locally-owned",
+    name: "Locally Owned",
+    tagline: "Okanagan proud",
+    description: "We're your neighbors, not a faceless corporation. As a locally owned Okanagan business, we're invested in our community and your complete satisfaction.",
+    backgroundImage: "/locally-owned-okanagan-team.jpg",
+    icon: MapPin,
+    benefits: ["Family operated", "Community focused", "Personal service"],
+  },
+  {
+    id: "professional-installation",
+    name: "Professional Installation",
+    tagline: "Done right, guaranteed",
+    description: "Our trained technicians handle every installation with precision and care. We measure twice, install once, and stand behind our work with a satisfaction guarantee.",
+    backgroundImage: "/professional-installation-service.jpg",
+    icon: Wrench,
+    benefits: ["Expert technicians", "Precise fitting", "Warranty included"],
   },
 ]
 
@@ -129,10 +147,10 @@ export function MaterialsSection() {
                   <motion.button
                     key={feature.id}
                     className={cn(
-                      "w-full text-left p-5 lg:p-6 border transition-all duration-500 group",
+                      "w-full text-left p-5 lg:p-6 border-2 transition-all duration-500 group",
                       isActive 
                         ? "bg-[#FAF7F2]/10 border-[#8A9A5B]" 
-                        : "bg-transparent border-[#FAF7F2]/10 hover:border-[#FAF7F2]/30"
+                        : "bg-transparent border-[#FAF7F2]/20 hover:border-[#FAF7F2]/40"
                     )}
                     onClick={() => setActiveFeature(feature.id)}
                     initial={{ opacity: 0, x: -40 }}
@@ -142,8 +160,8 @@ export function MaterialsSection() {
                   >
                     <div className="flex items-start gap-4">
                       <div className={cn(
-                        "w-10 h-10 flex items-center justify-center transition-colors duration-300",
-                        isActive ? "bg-[#8A9A5B] text-[#FAF7F2]" : "bg-[#FAF7F2]/10 text-[#FAF7F2]/60"
+                        "w-10 h-10 flex items-center justify-center transition-colors duration-300 border-2",
+                        isActive ? "bg-[#8A9A5B] text-[#FAF7F2] border-[#8A9A5B]" : "bg-[#FAF7F2]/10 text-[#FAF7F2]/60 border-[#FAF7F2]/30"
                       )}>
                         <Icon size={20} />
                       </div>
@@ -207,8 +225,8 @@ export function MaterialsSection() {
           >
             <div className="relative aspect-[3/4] max-w-md ml-auto">
               {/* Decorative frame */}
-              <div className="absolute -inset-6 border border-[#8A9A5B]/30" />
-              <div className="absolute -inset-3 border border-[#FAF7F2]/10" />
+              <div className="absolute -inset-6 border-[3px] border-[#8A9A5B]/80" />
+              <div className="absolute -inset-3 border-2 border-[#FAF7F2]/50" />
               
               {/* Feature icon display */}
               <div className="relative h-full flex flex-col items-center justify-center text-center p-12">
@@ -218,7 +236,7 @@ export function MaterialsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-8 border border-[#8A9A5B] flex items-center justify-center">
+                  <div className="w-24 h-24 mx-auto mb-8 border-2 border-[#8A9A5B] flex items-center justify-center">
                     <ActiveIcon size={40} className="text-[#8A9A5B]" />
                   </div>
                   
