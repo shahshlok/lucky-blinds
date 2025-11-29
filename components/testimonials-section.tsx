@@ -236,9 +236,9 @@ export function TestimonialsSection() {
           </div>
         </motion.div>
 
-        {/* Mini testimonial cards */}
+        {/* Mini testimonial cards - hidden on mobile */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 lg:mt-20"
+          className="hidden md:grid md:grid-cols-3 gap-6 mt-16 lg:mt-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
