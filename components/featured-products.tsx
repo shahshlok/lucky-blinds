@@ -1,10 +1,26 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { QuickLookModal } from "./quick-look-modal"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
+
+// All modal images to preload in background
+const modalImagesToPreload = [
+  // Cellular types
+  "/new_images/topdownbottomupcellular.jpg",
+  "/new_images/lightcellular.jpeg",
+  "/new_images/blackoutcellular.jpg",
+  "/new_images/daynightcellular.jpg",
+  // Zebra types
+  "/new_images/zebrablackout.jpg",
+  "/new_images/zebralightfilter.jpg",
+  // Roller types
+  "/new_images/rollerblack.jpeg",
+  "/new_images/lightfilterroller.jpg",
+  "/new_images/rollersolar.jpeg",
+]
 
 const blindTypes = [
   {
@@ -116,6 +132,14 @@ export function OurCollection() {
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50])
 
+  // Preload modal images immediately so switching is instant
+  useEffect(() => {
+    modalImagesToPreload.forEach((src) => {
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
+
   const handleQuickLook = (product: Product) => {
     setSelectedProduct(product)
     setIsModalOpen(true)
@@ -204,6 +228,7 @@ export function OurCollection() {
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index < 2}
                     />
                   </motion.div>
 

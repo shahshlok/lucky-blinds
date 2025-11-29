@@ -216,27 +216,18 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
               {/* Image Section */}
               <div className="relative bg-[#E8E4DC] min-w-0 overflow-hidden">
                 <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={hasTypes && selectedType ? selectedType.id : "default"}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="absolute inset-0"
-                    >
-                      <Image
-                        src={hasTypes && selectedType ? selectedType.image : product.image}
-                        alt={hasTypes && selectedType ? selectedType.name : product.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 55vw"
-                        priority
-                      />
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/40 via-transparent to-transparent" />
-                    </motion.div>
-                  </AnimatePresence>
+                  <div className="absolute inset-0">
+                    <Image
+                      src={hasTypes && selectedType ? selectedType.image : product.image}
+                      alt={hasTypes && selectedType ? selectedType.name : product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 55vw"
+                      priority
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/40 via-transparent to-transparent" />
+                  </div>
 
                   {/* Type badge on image */}
                   {hasTypes && selectedType && (
