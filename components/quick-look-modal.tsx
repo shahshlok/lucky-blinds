@@ -78,8 +78,8 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
 
             <div className="grid grid-cols-1 lg:grid-cols-2 max-h-[90vh] overflow-y-auto lg:overflow-hidden">
               {/* Image Gallery */}
-              <div className="relative bg-[#F5F0E8]">
-                <div className="relative aspect-square lg:h-full">
+              <div className="relative bg-[#F5F0E8] min-w-0">
+                <div className="relative aspect-square">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentImageIndex}
@@ -148,7 +148,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
               </div>
 
               {/* Product Details */}
-              <div className="flex flex-col p-8 lg:p-10 lg:overflow-y-auto">
+              <div className="flex flex-col p-8 lg:p-10 lg:overflow-y-auto min-w-0">
                 {/* Header */}
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
