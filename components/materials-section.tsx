@@ -138,8 +138,14 @@ export function MaterialsSection() {
             </motion.div>
 
             {/* Feature Tabs */}
-            <div className="space-y-4">
-              {features.map((feature, index) => {
+            <motion.div 
+              className="space-y-4"
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {features.map((feature) => {
                 const Icon = feature.icon
                 const isActive = activeFeature === feature.id
                 
@@ -208,7 +214,7 @@ export function MaterialsSection() {
                   </button>
                 )
               })}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Column - Large Feature Display */}
