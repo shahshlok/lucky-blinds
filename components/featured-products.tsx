@@ -230,10 +230,11 @@ export function OurCollection() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="w-11 h-11 rounded-full flex items-center justify-center bg-[#C4785A] transition-all duration-500 group-hover:bg-[#A65D3F]">
+                      <div className="w-12 h-12 rounded-full grid place-items-center bg-[#C4785A] shadow-lg">
                         <ArrowUpRight 
-                          size={18} 
-                          className="text-[#FAF7F2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
+                          size={20} 
+                          strokeWidth={2}
+                          className="text-[#FAF7F2]" 
                         />
                       </div>
                     </motion.div>
