@@ -45,7 +45,7 @@ export function HeroSection() {
                 {/* Terracotta gradient accent */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#C4785A]/20 via-transparent to-transparent" />
                 {/* Left-to-right gradient for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/60 via-[#0F1311]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/70 via-[#0F1311]/50 to-[#0F1311]/30" />
             </motion.div>
 
             {/* Decorative Elements */}
@@ -188,7 +188,7 @@ export function HeroSection() {
                             {/* Trust Indicators */}
                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-[#FAF7F2]/70 text-sm">
                                 <div className="flex items-center gap-2">
-                                    <div className="flex -space-x-1">
+                                    <div className="flex gap-0.5">
                                         {[...Array(5)].map((_, i) => (
                                             <Star
                                                 key={i}

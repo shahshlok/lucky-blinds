@@ -47,32 +47,19 @@ export function Header() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex items-center gap-3">
-                <div className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500",
-                  isScrolled ? "bg-[#C4785A]" : "bg-[#FAF7F2]"
+              <div>
+                <span className={cn(
+                  "font-display text-xl tracking-wide transition-colors duration-500",
+                  isScrolled ? "text-[#0F1311]" : "text-[#FAF7F2]"
                 )}>
-                  <span className={cn(
-                    "font-display text-xl font-medium transition-colors duration-500",
-                    isScrolled ? "text-[#FAF7F2]" : "text-[#C4785A]"
-                  )}>
-                    L
-                  </span>
-                </div>
-                <div className="hidden sm:block">
-                  <span className={cn(
-                    "font-display text-xl tracking-wide transition-colors duration-500",
-                    isScrolled ? "text-[#0F1311]" : "text-[#FAF7F2]"
-                  )}>
-                    Lucky Blinds
-                  </span>
-                  <span className={cn(
-                    "block text-[10px] uppercase tracking-[0.2em] transition-colors duration-500",
-                    isScrolled ? "text-[#7A9284]" : "text-[#FAF7F2]/70"
-                  )}>
-                    Okanagan Valley
-                  </span>
-                </div>
+                  Lucky Blinds
+                </span>
+                <span className={cn(
+                  "block text-[10px] uppercase tracking-[0.2em] transition-colors duration-500",
+                  isScrolled ? "text-[#7A9284]" : "text-[#FAF7F2]/70"
+                )}>
+                  Okanagan Valley
+                </span>
               </div>
             </motion.a>
 
@@ -106,19 +93,28 @@ export function Header() {
               <motion.a
                 href="tel:+12501234567"
                 className={cn(
-                  "hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium uppercase tracking-wider transition-all duration-300",
+                  "hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium uppercase tracking-wider transition-colors duration-300 relative overflow-hidden group",
                   isScrolled
-                    ? "bg-[#C4785A] text-[#FAF7F2] hover:bg-[#A65D3F]"
-                    : "bg-[#FAF7F2] text-[#C4785A] hover:bg-[#FAF7F2]/90"
+                    ? "bg-[#C4785A] text-[#FAF7F2]"
+                    : "bg-[#FAF7F2] text-[#C4785A]"
                 )}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Phone size={14} />
-                <span>Free Quote</span>
+                <span className={cn(
+                  "absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out",
+                  isScrolled ? "bg-[#FAF7F2]" : "bg-[#C4785A]"
+                )} />
+                <Phone size={14} className={cn(
+                  "relative z-10 transition-colors duration-300",
+                  isScrolled ? "group-hover:text-[#C4785A]" : "group-hover:text-[#FAF7F2]"
+                )} />
+                <span className={cn(
+                  "relative z-10 transition-colors duration-300",
+                  isScrolled ? "group-hover:text-[#C4785A]" : "group-hover:text-[#FAF7F2]"
+                )}>Free Quote</span>
               </motion.a>
 
               {/* Mobile menu button */}
