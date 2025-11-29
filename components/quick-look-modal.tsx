@@ -70,7 +70,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
           >
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 z-30 w-10 h-10 bg-[#0F1311] text-[#FAF7F2] flex items-center justify-center hover:bg-[#C4785A] transition-colors duration-300"
+              className="absolute top-4 right-4 z-30 w-10 h-10 bg-[#0F1311] text-[#FAF7F2] flex items-center justify-center hover:bg-[#7A9B6D] transition-colors duration-300"
               onClick={onClose}
             >
               <X size={20} />
@@ -103,13 +103,13 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                   {product.quickLookImages.length > 1 && (
                     <>
                       <button
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FAF7F2] text-[#0F1311] flex items-center justify-center hover:bg-[#C4785A] hover:text-[#FAF7F2] transition-all duration-300 shadow-lg"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FAF7F2] text-[#0F1311] flex items-center justify-center hover:bg-[#7A9B6D] hover:text-[#FAF7F2] transition-all duration-300 shadow-lg"
                         onClick={prevImage}
                       >
                         <ChevronLeft size={20} />
                       </button>
                       <button
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FAF7F2] text-[#0F1311] flex items-center justify-center hover:bg-[#C4785A] hover:text-[#FAF7F2] transition-all duration-300 shadow-lg"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#FAF7F2] text-[#0F1311] flex items-center justify-center hover:bg-[#7A9B6D] hover:text-[#FAF7F2] transition-all duration-300 shadow-lg"
                         onClick={nextImage}
                       >
                         <ChevronRight size={20} />
@@ -130,7 +130,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                       key={index}
                       className={`relative w-14 h-14 overflow-hidden border-2 transition-all duration-200 ${
                         currentImageIndex === index 
-                          ? "border-[#C4785A]" 
+                          ? "border-[#7A9B6D]" 
                           : "border-transparent opacity-70 hover:opacity-100"
                       }`}
                       onClick={() => setCurrentImageIndex(index)}
@@ -152,7 +152,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                 {/* Header */}
                 <div className="mb-8">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="block w-8 h-[1px] bg-[#C4785A]" />
+                    <span className="block w-8 h-[1px] bg-[#7A9B6D]" />
                     <span className="text-xs uppercase tracking-[0.2em] text-[#7A9284]">
                       Quick Look
                     </span>
@@ -165,7 +165,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
 
                 {/* Price */}
                 <div className="mb-8 pb-8 border-b border-[#E8E0D4]">
-                  <span className="font-display text-3xl text-[#C4785A]">{product.price}</span>
+                  <span className="font-display text-3xl text-[#7A9B6D]">{product.price}</span>
                   <span className="block text-sm text-[#7A9284] mt-1">{product.dimensions}</span>
                 </div>
 
@@ -180,7 +180,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                         key={index}
                         className={`relative w-10 h-10 rounded-full transition-all duration-200 ${
                           selectedSwatch === index 
-                            ? "ring-2 ring-[#C4785A] ring-offset-2" 
+                            ? "ring-2 ring-[#7A9B6D] ring-offset-2" 
                             : "hover:scale-110"
                         }`}
                         style={{ backgroundColor: swatch.color }}
@@ -206,8 +206,8 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                   <ul className="space-y-3">
                     {features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3 text-[#2D3B35]">
-                        <div className="w-5 h-5 bg-[#C4785A]/10 flex items-center justify-center flex-shrink-0">
-                          <Check size={12} className="text-[#C4785A]" />
+                        <div className="w-5 h-5 bg-[#7A9B6D]/10 flex items-center justify-center flex-shrink-0">
+                          <Check size={12} className="text-[#7A9B6D]" />
                         </div>
                         {feature}
                       </li>
@@ -219,7 +219,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                 <div className="mt-auto space-y-3">
                   <motion.a
                     href="#contact"
-                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#C4785A] text-[#FAF7F2] font-medium uppercase tracking-wider text-sm hover:bg-[#A65D3F] transition-colors duration-300"
+                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#7A9B6D] text-[#FAF7F2] font-medium uppercase tracking-wider text-sm hover:bg-[#5F8A52] transition-colors duration-300"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                     onClick={onClose}
@@ -228,7 +228,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                   </motion.a>
                   <a
                     href="tel:+12501234567"
-                    className="flex items-center justify-center gap-2 w-full py-3 text-[#7A9284] text-sm hover:text-[#C4785A] transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-3 text-[#7A9284] text-sm hover:text-[#7A9B6D] transition-colors"
                   >
                     <Phone size={14} />
                     Or call: (250) 123-4567

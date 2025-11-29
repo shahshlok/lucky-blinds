@@ -72,7 +72,7 @@ export function Header() {
                   className={cn(
                     "text-sm uppercase tracking-[0.15em] font-medium transition-colors duration-300 relative group",
                     isScrolled 
-                      ? "text-[#2D3B35] hover:text-[#C4785A]" 
+                      ? "text-[#2D3B35] hover:text-[#7A9B6D]" 
                       : "text-[#FAF7F2]/90 hover:text-[#FAF7F2]"
                   )}
                   initial={{ opacity: 0, y: -20 }}
@@ -82,7 +82,7 @@ export function Header() {
                   {link.name}
                   <span className={cn(
                     "absolute -bottom-1 left-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full",
-                    isScrolled ? "bg-[#C4785A]" : "bg-[#FAF7F2]"
+                    isScrolled ? "bg-[#7A9B6D]" : "bg-[#FAF7F2]"
                   )} />
                 </motion.a>
               ))}
@@ -95,8 +95,8 @@ export function Header() {
                 className={cn(
                   "hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium uppercase tracking-wider transition-colors duration-300 relative overflow-hidden group",
                   isScrolled
-                    ? "bg-[#C4785A] text-[#FAF7F2]"
-                    : "bg-[#FAF7F2] text-[#C4785A]"
+                    ? "bg-[#7A9B6D] text-[#FAF7F2]"
+                    : "bg-[#FAF7F2] text-[#7A9B6D]"
                 )}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -105,15 +105,15 @@ export function Header() {
               >
                 <span className={cn(
                   "absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out",
-                  isScrolled ? "bg-[#FAF7F2]" : "bg-[#C4785A]"
+                  isScrolled ? "bg-[#FAF7F2]" : "bg-[#7A9B6D]"
                 )} />
                 <Phone size={14} className={cn(
                   "relative z-10 transition-colors duration-300",
-                  isScrolled ? "group-hover:text-[#C4785A]" : "group-hover:text-[#FAF7F2]"
+                  isScrolled ? "group-hover:text-[#7A9B6D]" : "group-hover:text-[#FAF7F2]"
                 )} />
                 <span className={cn(
                   "relative z-10 transition-colors duration-300",
-                  isScrolled ? "group-hover:text-[#C4785A]" : "group-hover:text-[#FAF7F2]"
+                  isScrolled ? "group-hover:text-[#7A9B6D]" : "group-hover:text-[#FAF7F2]"
                 )}>Free Quote</span>
               </motion.a>
 
@@ -166,7 +166,7 @@ export function Header() {
                     <motion.a
                       key={link.name}
                       href={link.href}
-                      className="block py-4 font-display text-3xl text-[#0F1311] hover:text-[#C4785A] transition-colors border-b border-[#E8E0D4]"
+                      className="block py-4 font-display text-3xl text-[#0F1311] hover:text-[#7A9B6D] transition-colors border-b border-[#E8E0D4]"
                       onClick={() => setIsMobileMenuOpen(false)}
                       initial={{ opacity: 0, x: 40 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -185,7 +185,7 @@ export function Header() {
                 >
                   <a
                     href="tel:+12501234567"
-                    className="flex items-center justify-center gap-2 w-full py-4 bg-[#C4785A] text-[#FAF7F2] font-medium uppercase tracking-wider text-sm"
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-[#7A9B6D] text-[#FAF7F2] font-medium uppercase tracking-wider text-sm"
                   >
                     <Phone size={16} />
                     Call for Free Quote

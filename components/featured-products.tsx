@@ -50,7 +50,7 @@ const blindTypes = [
       "/roller-blinds-in-bedroom.jpg",
     ],
     dimensions: "Custom sizes available",
-    accent: "#C4785A",
+    accent: "#7A9B6D",
     number: "02",
   },
   {
@@ -137,7 +137,7 @@ export function OurCollection() {
         className="absolute inset-0 pointer-events-none"
         style={{ y: backgroundY }}
       >
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#C4785A]/[0.03] blur-[100px]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#7A9B6D]/[0.03] blur-[100px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#7A9284]/[0.04] blur-[100px]" />
       </motion.div>
 
@@ -152,16 +152,16 @@ export function OurCollection() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center justify-center gap-4 mb-6">
-              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
               <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
                 The Collection
               </span>
-              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#0F1311] leading-[1.05] mb-6">
               Your view,
-              <span className="block italic font-light text-[#C4785A] mt-1">
+              <span className="block italic font-light text-[#7A9B6D] mt-1">
                 your rules.
               </span>
             </h2>
@@ -212,7 +212,7 @@ export function OurCollection() {
                   
                   {/* Colored accent overlay on hover */}
                   <motion.div 
-                    className="absolute inset-0 bg-[#C4785A] mix-blend-overlay"
+                    className="absolute inset-0 bg-[#7A9B6D] mix-blend-overlay"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: hoveredIndex === index ? 0.15 : 0 }}
                     transition={{ duration: 0.5 }}
@@ -230,7 +230,7 @@ export function OurCollection() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="w-12 h-12 rounded-full grid place-items-center bg-[#C4785A] shadow-lg">
+                      <div className="w-12 h-12 rounded-full grid place-items-center bg-[#7A9B6D] shadow-lg">
                         <ArrowUpRight 
                           size={20} 
                           strokeWidth={2}
@@ -253,7 +253,7 @@ export function OurCollection() {
 
                   {/* Bottom accent line */}
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-[3px] bg-[#C4785A]"
+                    className="absolute bottom-0 left-0 h-[3px] bg-[#7A9B6D]"
                     initial={{ width: 0 }}
                     animate={{ width: hoveredIndex === index ? '100%' : '0%' }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -278,16 +278,16 @@ export function OurCollection() {
             {/* CTA Card */}
             <div className="relative overflow-hidden bg-[#E8E0D4] border border-[#D4C4A8]">
               {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C4785A]/5 via-transparent to-[#7A9284]/5" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#7A9B6D]/5 via-transparent to-[#7A9284]/5" />
               
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-24 h-24">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#C4785A] to-transparent" />
-                <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-[#C4785A] to-transparent" />
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#7A9B6D] to-transparent" />
+                <div className="absolute top-0 left-0 h-full w-[1px] bg-gradient-to-b from-[#7A9B6D] to-transparent" />
               </div>
               <div className="absolute bottom-0 right-0 w-24 h-24">
-                <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-[#C4785A] to-transparent" />
-                <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-[#C4785A] to-transparent" />
+                <div className="absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-l from-[#7A9B6D] to-transparent" />
+                <div className="absolute bottom-0 right-0 h-full w-[1px] bg-gradient-to-t from-[#7A9B6D] to-transparent" />
               </div>
 
               <div className="relative py-12 lg:py-16 px-8 lg:px-16">
@@ -295,7 +295,7 @@ export function OurCollection() {
                   <div className="text-center lg:text-left">
                     <p className="font-display text-2xl lg:text-3xl text-[#0F1311] mb-2">
                       Need help choosing the{" "}
-                      <span className="italic text-[#C4785A]">perfect style?</span>
+                      <span className="italic text-[#7A9B6D]">perfect style?</span>
                     </p>
                     <p className="text-[#5C7268] text-sm lg:text-base max-w-md">
                       Our window treatment specialists bring samples directly to your home
@@ -310,7 +310,7 @@ export function OurCollection() {
                     whileTap={{ scale: 0.98 }}
                   >
                     {/* Button background */}
-                    <div className="absolute inset-0 bg-[#C4785A] transition-all duration-500 group-hover:bg-[#A65D3F]" />
+                    <div className="absolute inset-0 bg-[#7A9B6D] transition-all duration-500 group-hover:bg-[#5F8A52]" />
                     
                     {/* Shimmer effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />

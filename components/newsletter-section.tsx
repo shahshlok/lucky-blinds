@@ -46,8 +46,8 @@ export function NewsletterSection() {
     ${errors[fieldName] 
       ? "border-[#B44D4D]" 
       : focusedField === fieldName 
-        ? "border-[#C4785A]" 
-        : "border-[#E8E0D4] hover:border-[#C4785A]/50"
+        ? "border-[#7A9B6D]" 
+        : "border-[#E8E0D4] hover:border-[#7A9B6D]/50"
     }
   `
 
@@ -56,7 +56,7 @@ export function NewsletterSection() {
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#F5F0E8] to-transparent" />
       <div className="absolute bottom-0 right-0 w-64 h-64 border border-[#E8E0D4] rounded-full -translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-20 right-20 w-32 h-32 border border-[#C4785A]/20 rounded-full" />
+      <div className="absolute top-20 right-20 w-32 h-32 border border-[#7A9B6D]/20 rounded-full" />
       
       <div className="container-luxe relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -68,7 +68,7 @@ export function NewsletterSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="flex items-center gap-4 mb-6">
-              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
               <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
                 Free Consultation
               </span>
@@ -76,7 +76,7 @@ export function NewsletterSection() {
             
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#0F1311] leading-[1.1] mb-6">
               Let's transform
-              <span className="block italic font-light text-[#C4785A]">your space.</span>
+              <span className="block italic font-light text-[#7A9B6D]">your space.</span>
             </h2>
             
             <p className="text-lg text-[#2D3B35]/80 leading-relaxed mb-10 max-w-md">
@@ -99,8 +99,8 @@ export function NewsletterSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="w-5 h-5 bg-[#C4785A]/10 flex items-center justify-center">
-                    <Check size={12} className="text-[#C4785A]" />
+                  <div className="w-5 h-5 bg-[#7A9B6D]/10 flex items-center justify-center">
+                    <Check size={12} className="text-[#7A9B6D]" />
                   </div>
                   <span className="text-[#2D3B35]">{point}</span>
                 </motion.div>
@@ -110,7 +110,7 @@ export function NewsletterSection() {
             {/* Service Areas */}
             <div className="p-6 bg-[#F5F0E8] border border-[#E8E0D4]">
               <div className="flex items-center gap-2 mb-3">
-                <MapPin size={16} className="text-[#C4785A]" />
+                <MapPin size={16} className="text-[#7A9B6D]" />
                 <span className="text-sm font-medium uppercase tracking-wider text-[#2D3B35]">
                   Service Areas
                 </span>
@@ -224,7 +224,7 @@ export function NewsletterSection() {
 
                     <motion.button
                       type="submit"
-                      className="group w-full flex items-center justify-center gap-3 bg-[#C4785A] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#A65D3F] transition-colors duration-300"
+                      className="group w-full flex items-center justify-center gap-3 bg-[#7A9B6D] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#5F8A52] transition-colors duration-300"
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
                     >
@@ -244,8 +244,8 @@ export function NewsletterSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="w-20 h-20 bg-[#C4785A]/10 flex items-center justify-center mx-auto mb-6">
-                      <Check size={32} className="text-[#C4785A]" />
+                    <div className="w-20 h-20 bg-[#7A9B6D]/10 flex items-center justify-center mx-auto mb-6">
+                      <Check size={32} className="text-[#7A9B6D]" />
                     </div>
                     <h3 className="font-display text-2xl text-[#0F1311] mb-3">
                       Thank you, {formData.name}!
@@ -254,7 +254,7 @@ export function NewsletterSection() {
                       We've received your request. A Lucky Blinds specialist will contact 
                       you within 24 hours to schedule your free consultation.
                     </p>
-                    <div className="inline-flex items-center gap-2 text-sm text-[#C4785A]">
+                    <div className="inline-flex items-center gap-2 text-sm text-[#7A9B6D]">
                       <Phone size={14} />
                       <span>Or call us now: (250) 123-4567</span>
                     </div>

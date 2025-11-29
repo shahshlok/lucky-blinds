@@ -36,7 +36,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0F1311] text-[#FAF7F2] relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C4785A]/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#7A9B6D]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7A9284]/5 rounded-full blur-2xl" />
       
       {/* Top CTA Section */}
@@ -51,7 +51,7 @@ export function Footer() {
             >
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
                 Ready to elevate
-                <span className="block italic font-light text-[#C4785A]">your windows?</span>
+                <span className="block italic font-light text-[#7A9B6D]">your windows?</span>
               </h2>
               <p className="text-[#FAF7F2]/60 max-w-md">
                 Get in touch for a free consultation and discover the perfect 
@@ -68,7 +68,7 @@ export function Footer() {
             >
               <motion.a
                 href="tel:+12501234567"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C4785A] text-[#FAF7F2] text-sm font-medium uppercase tracking-wider hover:bg-[#A65D3F] transition-colors duration-300"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#7A9B6D] text-[#FAF7F2] text-sm font-medium uppercase tracking-wider hover:bg-[#5F8A52] transition-colors duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -102,7 +102,7 @@ export function Footer() {
           >
             {/* Logo */}
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#C4785A] flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#7A9B6D] flex items-center justify-center">
                 <span className="font-display text-2xl text-[#FAF7F2]">L</span>
               </div>
               <div>
@@ -122,14 +122,14 @@ export function Footer() {
             <div className="space-y-3 mb-8">
               <a
                 href="tel:+12501234567"
-                className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#C4785A] transition-colors group"
+                className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#7A9B6D] transition-colors group"
               >
                 <Phone size={16} />
                 <span>(250) 123-4567</span>
               </a>
               <a
                 href="mailto:info@luckyblinds.ca"
-                className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#C4785A] transition-colors"
+                className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#7A9B6D] transition-colors"
               >
                 <Mail size={16} />
                 <span>info@luckyblinds.ca</span>
@@ -146,7 +146,7 @@ export function Footer() {
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 border border-[#2D3B35] flex items-center justify-center text-[#FAF7F2]/60 hover:text-[#FAF7F2] hover:border-[#C4785A] hover:bg-[#C4785A]/10 transition-all duration-300"
+                  className="w-10 h-10 border border-[#2D3B35] flex items-center justify-center text-[#FAF7F2]/60 hover:text-[#FAF7F2] hover:border-[#7A9B6D] hover:bg-[#7A9B6D]/10 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -176,7 +176,7 @@ export function Footer() {
                       <li key={link.name}>
                         <a
                           href={link.href}
-                          className="group inline-flex items-center gap-1 text-[#FAF7F2]/70 hover:text-[#C4785A] transition-colors duration-200"
+                          className="group inline-flex items-center gap-1 text-[#FAF7F2]/70 hover:text-[#7A9B6D] transition-colors duration-200"
                         >
                           {link.name}
                           <ArrowUpRight 

@@ -82,7 +82,7 @@ export function CollectionStrip() {
         >
           <div>
             <div className="flex items-center gap-4 mb-4">
-              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
               <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
                 Browse Categories
               </span>
@@ -134,7 +134,7 @@ export function CollectionStrip() {
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/60 via-transparent to-transparent" />
                   <motion.div 
-                    className="absolute inset-0 bg-[#C4785A]/0 group-hover:bg-[#C4785A]/10 transition-colors duration-500"
+                    className="absolute inset-0 bg-[#7A9B6D]/0 group-hover:bg-[#7A9B6D]/10 transition-colors duration-500"
                   />
                 </motion.div>
                 
@@ -146,7 +146,7 @@ export function CollectionStrip() {
               
               {/* Text content */}
               <div className="space-y-1">
-                <h3 className="font-display text-2xl text-[#FAF7F2] group-hover:text-[#C4785A] transition-colors duration-300">
+                <h3 className="font-display text-2xl text-[#FAF7F2] group-hover:text-[#7A9B6D] transition-colors duration-300">
                   {collection.name}
                 </h3>
                 <p className="text-[#FAF7F2]/50 text-sm">
@@ -165,7 +165,7 @@ export function CollectionStrip() {
             transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="text-center p-8 border border-[#FAF7F2]/20 h-full flex flex-col items-center justify-center">
-              <span className="text-[#C4785A] text-6xl font-display mb-4">+</span>
+              <span className="text-[#7A9B6D] text-6xl font-display mb-4">+</span>
               <h3 className="font-display text-2xl text-[#FAF7F2] mb-2">
                 Custom Orders
               </h3>
@@ -174,7 +174,7 @@ export function CollectionStrip() {
               </p>
               <motion.a
                 href="#contact"
-                className="px-6 py-3 border border-[#C4785A] text-[#C4785A] text-sm uppercase tracking-wider font-medium hover:bg-[#C4785A] hover:text-[#FAF7F2] transition-all duration-300"
+                className="px-6 py-3 border border-[#7A9B6D] text-[#7A9B6D] text-sm uppercase tracking-wider font-medium hover:bg-[#7A9B6D] hover:text-[#FAF7F2] transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >

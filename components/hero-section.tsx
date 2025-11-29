@@ -43,7 +43,7 @@ export function HeroSection() {
                     style={{ opacity: overlayOpacity }}
                 />
                 {/* Terracotta gradient accent */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#C4785A]/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#7A9B6D]/20 via-transparent to-transparent" />
                 {/* Left-to-right gradient for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/70 via-[#0F1311]/50 to-[#0F1311]/30" />
             </motion.div>
@@ -53,7 +53,7 @@ export function HeroSection() {
 
             {/* Side Accent Line */}
             <motion.div
-                className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-gradient-to-b from-transparent via-[#C4785A] to-transparent z-20"
+                className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 w-[1px] h-32 bg-gradient-to-b from-transparent via-[#7A9B6D] to-transparent z-20"
                 initial={{ scaleY: 0, opacity: 0 }}
                 animate={{ scaleY: 1, opacity: 1 }}
                 transition={{
@@ -81,7 +81,7 @@ export function HeroSection() {
                                 ease: [0.16, 1, 0.3, 1],
                             }}
                         >
-                            <span className="block w-12 h-[1px] bg-[#C4785A]" />
+                            <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
                             <span className="text-xs uppercase tracking-[0.25em] text-[#FAF7F2]/80 font-medium">
                                 Kelowna & Okanagan Valley
                             </span>
@@ -107,7 +107,7 @@ export function HeroSection() {
                                 Crafted for
                             </motion.span>
                             <motion.span
-                                className="block text-display-xl leading-[0.9] italic font-light text-[#C4785A]"
+                                className="block text-display-xl leading-[0.9] italic font-light text-[#7A9B6D]"
                                 initial={{ opacity: 0, y: 60 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{
@@ -149,7 +149,7 @@ export function HeroSection() {
                         >
                             <motion.a
                                 href="#contact"
-                                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#C4785A] text-[#FAF7F2] text-sm font-medium uppercase tracking-[0.1em] transition-all duration-500 hover:bg-[#A65D3F]"
+                                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#7A9B6D] text-[#FAF7F2] text-sm font-medium uppercase tracking-[0.1em] transition-all duration-500 hover:bg-[#5F8A52]"
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >

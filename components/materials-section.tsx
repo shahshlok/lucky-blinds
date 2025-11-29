@@ -102,7 +102,7 @@ export function MaterialsSection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="flex items-center gap-4 mb-6">
-                <span className="block w-12 h-[1px] bg-[#C4785A]" />
+                <span className="block w-12 h-[1px] bg-[#7A9B6D]" />
                 <span className="text-xs uppercase tracking-[0.25em] text-[#FAF7F2]/60 font-medium">
                   Why Choose Us
                 </span>
@@ -110,7 +110,7 @@ export function MaterialsSection() {
               
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#FAF7F2] leading-[1.1] mb-8">
                 Designed for how
-                <span className="block italic font-light text-[#C4785A]">you live.</span>
+                <span className="block italic font-light text-[#7A9B6D]">you live.</span>
               </h2>
               
               <p className="text-lg text-[#FAF7F2]/70 leading-relaxed max-w-md mb-12">
@@ -131,7 +131,7 @@ export function MaterialsSection() {
                     className={cn(
                       "w-full text-left p-5 lg:p-6 border transition-all duration-500 group",
                       isActive 
-                        ? "bg-[#FAF7F2]/10 border-[#C4785A]" 
+                        ? "bg-[#FAF7F2]/10 border-[#7A9B6D]" 
                         : "bg-transparent border-[#FAF7F2]/10 hover:border-[#FAF7F2]/30"
                     )}
                     onClick={() => setActiveFeature(feature.id)}
@@ -143,7 +143,7 @@ export function MaterialsSection() {
                     <div className="flex items-start gap-4">
                       <div className={cn(
                         "w-10 h-10 flex items-center justify-center transition-colors duration-300",
-                        isActive ? "bg-[#C4785A] text-[#FAF7F2]" : "bg-[#FAF7F2]/10 text-[#FAF7F2]/60"
+                        isActive ? "bg-[#7A9B6D] text-[#FAF7F2]" : "bg-[#FAF7F2]/10 text-[#FAF7F2]/60"
                       )}>
                         <Icon size={20} />
                       </div>
@@ -158,7 +158,7 @@ export function MaterialsSection() {
                           </h3>
                           <span className={cn(
                             "text-xs uppercase tracking-wider transition-colors duration-300",
-                            isActive ? "text-[#C4785A]" : "text-[#FAF7F2]/40"
+                            isActive ? "text-[#7A9B6D]" : "text-[#FAF7F2]/40"
                           )}>
                             {feature.tagline}
                           </span>
@@ -181,7 +181,7 @@ export function MaterialsSection() {
                                     key={benefit}
                                     className="inline-flex items-center gap-1.5 text-xs text-[#FAF7F2]/80 bg-[#FAF7F2]/5 px-3 py-1.5"
                                   >
-                                    <Check size={12} className="text-[#C4785A]" />
+                                    <Check size={12} className="text-[#7A9B6D]" />
                                     {benefit}
                                   </span>
                                 ))}
@@ -207,7 +207,7 @@ export function MaterialsSection() {
           >
             <div className="relative aspect-[3/4] max-w-md ml-auto">
               {/* Decorative frame */}
-              <div className="absolute -inset-6 border border-[#C4785A]/30" />
+              <div className="absolute -inset-6 border border-[#7A9B6D]/30" />
               <div className="absolute -inset-3 border border-[#FAF7F2]/10" />
               
               {/* Feature icon display */}
@@ -218,15 +218,15 @@ export function MaterialsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-8 border border-[#C4785A] flex items-center justify-center">
-                    <ActiveIcon size={40} className="text-[#C4785A]" />
+                  <div className="w-24 h-24 mx-auto mb-8 border border-[#7A9B6D] flex items-center justify-center">
+                    <ActiveIcon size={40} className="text-[#7A9B6D]" />
                   </div>
                   
                   <h3 className="font-display text-4xl text-[#FAF7F2] mb-4">
                     {activeFeatureData.name}
                   </h3>
                   
-                  <span className="block w-12 h-[1px] bg-[#C4785A] mx-auto mb-4" />
+                  <span className="block w-12 h-[1px] bg-[#7A9B6D] mx-auto mb-4" />
                   
                   <p className="text-lg italic text-[#FAF7F2]/60 font-display">
                     {activeFeatureData.tagline}
