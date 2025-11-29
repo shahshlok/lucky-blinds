@@ -198,10 +198,10 @@ export function TestimonialsSection() {
             <div className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2">
               <button
                 onClick={prev}
-                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#8A9A5B]/60 hover:text-[#8A9A5B] transition-all duration-300"
+                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#5C7268] hover:text-[#8A9A5B] transition-all duration-300"
               >
                 <span className="relative flex items-center justify-center w-full h-full">
-                  <span className="absolute inset-0 border border-[#8A9A5B]/20 group-hover:border-[#8A9A5B]/40 transition-colors duration-300" />
+                  <span className="absolute inset-0 border border-[#8A9A5B]/50 group-hover:border-[#8A9A5B] transition-colors duration-300" />
                   <ChevronLeft size={18} strokeWidth={1.5} />
                 </span>
               </button>
@@ -209,10 +209,10 @@ export function TestimonialsSection() {
             <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2">
               <button
                 onClick={next}
-                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#8A9A5B]/60 hover:text-[#8A9A5B] transition-all duration-300"
+                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#5C7268] hover:text-[#8A9A5B] transition-all duration-300"
               >
                 <span className="relative flex items-center justify-center w-full h-full">
-                  <span className="absolute inset-0 border border-[#8A9A5B]/20 group-hover:border-[#8A9A5B]/40 transition-colors duration-300" />
+                  <span className="absolute inset-0 border border-[#8A9A5B]/50 group-hover:border-[#8A9A5B] transition-colors duration-300" />
                   <ChevronRight size={18} strokeWidth={1.5} />
                 </span>
               </button>
