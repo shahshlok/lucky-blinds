@@ -21,7 +21,7 @@ export function Header() {
     <motion.header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        "backdrop-blur-md border-b border-border/[0.02]",
+        "border-b border-border/[0.02]",
         isScrolled ? "bg-background/90" : "bg-background/[0.02]",
       )}
       initial={{ y: -100 }}
@@ -37,10 +37,7 @@ export function Header() {
                 alt="Lucky Blinds - Quality Meets Affordability"
                 width={180}
                 height={60}
-                className={cn(
-                  "h-12 lg:h-14 w-auto transition-all duration-300",
-                  isScrolled ? "brightness-100" : "brightness-0 invert",
-                )}
+                className="h-12 lg:h-14 w-auto transition-all duration-300"
                 priority
               />
             </a>
