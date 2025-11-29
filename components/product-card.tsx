@@ -25,7 +25,7 @@ const badgeStyles = {
   "New": "bg-[#7A9284] text-[#FAF7F2]",
   "Back in stock": "bg-[#5B8A9A] text-[#FAF7F2]",
   "Limited": "bg-[#C9A962] text-[#0F1311]",
-  "Popular": "bg-[#7A9B6D] text-[#FAF7F2]",
+  "Popular": "bg-[#8A9A5B] text-[#FAF7F2]",
   "Best Seller": "bg-[#C9A962] text-[#0F1311]",
   "Smart Home": "bg-[#5B8A9A] text-[#FAF7F2]",
 }
@@ -61,7 +61,7 @@ export function ProductCard({ product, onQuickLook, variant = "default" }: Produ
           {/* Warm overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/70 via-[#0F1311]/20 to-transparent" />
           <motion.div 
-            className="absolute inset-0 bg-[#7A9B6D]/10"
+            className="absolute inset-0 bg-[#8A9A5B]/10"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
