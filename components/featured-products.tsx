@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { QuickLookModal } from "./quick-look-modal"
 import Image from "next/image"
-import { ArrowUpRight, Plus } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 const blindTypes = [
   {
@@ -189,7 +189,7 @@ export function OurCollection() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="relative aspect-[16/10] lg:aspect-[16/9] overflow-hidden">
+                <div className="relative aspect-[16/10] lg:aspect-[16/9] overflow-hidden rounded-sm">
                   {/* Image */}
                   <motion.div
                     className="absolute inset-0"
@@ -208,117 +208,51 @@ export function OurCollection() {
                   </motion.div>
 
                   {/* Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/90 via-[#0F1311]/30 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/80 via-[#0F1311]/20 to-transparent" />
                   
                   {/* Colored accent overlay on hover */}
                   <motion.div 
-                    className="absolute inset-0 mix-blend-overlay"
-                    style={{ backgroundColor: product.accent }}
+                    className="absolute inset-0 bg-[#C4785A] mix-blend-overlay"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredIndex === index ? 0.2 : 0 }}
+                    animate={{ opacity: hoveredIndex === index ? 0.15 : 0 }}
                     transition={{ duration: 0.5 }}
                   />
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-between">
-                    {/* Top Row */}
-                    <div className="flex items-start justify-between">
-                      {/* Number */}
-                      <motion.span 
-                        className="font-display text-6xl lg:text-7xl text-[#FAF7F2]/10 leading-none select-none"
-                        animate={{ 
-                          opacity: hoveredIndex === index ? 0.2 : 0.1,
-                          x: hoveredIndex === index ? 8 : 0 
-                        }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        {product.number}
-                      </motion.span>
-
-                      {/* Arrow Button */}
-                      <motion.div 
-                        className="relative"
-                        animate={{ 
-                          scale: hoveredIndex === index ? 1 : 0.9,
-                          opacity: hoveredIndex === index ? 1 : 0.6
-                        }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        <div 
-                          className="w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500"
-                          style={{ 
-                            backgroundColor: hoveredIndex === index ? product.accent : 'rgba(250, 247, 242, 0.15)',
-                          }}
-                        >
-                          <ArrowUpRight 
-                            size={20} 
-                            className="text-[#FAF7F2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
-                          />
-                        </div>
-                      </motion.div>
-                    </div>
+                  <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end">
+                    {/* Arrow Button - Top Right, only visible on hover */}
+                    <motion.div 
+                      className="absolute top-6 right-6 lg:top-8 lg:right-8"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        scale: hoveredIndex === index ? 1 : 0.8,
+                        opacity: hoveredIndex === index ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="w-11 h-11 rounded-full flex items-center justify-center bg-[#C4785A] transition-all duration-500 group-hover:bg-[#A65D3F]">
+                        <ArrowUpRight 
+                          size={18} 
+                          className="text-[#FAF7F2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
+                        />
+                      </div>
+                    </motion.div>
 
                     {/* Bottom Content */}
                     <div>
-                      {/* Swatches */}
-                      <motion.div 
-                        className="flex gap-2 mb-4"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ 
-                          opacity: hoveredIndex === index ? 1 : 0,
-                          y: hoveredIndex === index ? 0 : 10
-                        }}
-                        transition={{ duration: 0.4, delay: 0.1 }}
-                      >
-                        {product.swatches.map((swatch) => (
-                          <div
-                            key={swatch.name}
-                            className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/40 shadow-lg"
-                            style={{ backgroundColor: swatch.color }}
-                            title={swatch.name}
-                          />
-                        ))}
-                        <div className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/20 flex items-center justify-center bg-[#FAF7F2]/10">
-                          <Plus size={12} className="text-[#FAF7F2]/60" />
-                        </div>
-                      </motion.div>
-
-                      {/* Title & Tagline - BIGGER, BOLDER NAME */}
-                      <div className="mb-4">
-                        <h3 className="font-display text-4xl lg:text-5xl text-[#FAF7F2] mb-2 leading-none tracking-tight">
-                          {product.name}
-                        </h3>
-                        <p className="text-[#FAF7F2]/70 text-sm lg:text-base">
-                          {product.tagline}
-                        </p>
-                      </div>
-
-                      {/* Features Row */}
-                      <motion.div 
-                        className="flex flex-wrap gap-2"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ 
-                          opacity: hoveredIndex === index ? 1 : 0.8,
-                        }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        {product.materials.map((material) => (
-                          <span 
-                            key={material}
-                            className="px-3 py-1.5 text-xs uppercase tracking-wider text-[#FAF7F2]/80 bg-[#FAF7F2]/10 backdrop-blur-sm"
-                          >
-                            {material}
-                          </span>
-                        ))}
-                      </motion.div>
+                      {/* Title & Tagline */}
+                      <h3 className="font-display text-3xl lg:text-4xl text-[#FAF7F2] mb-1.5 leading-none tracking-tight">
+                        {product.name}
+                      </h3>
+                      <p className="text-[#FAF7F2]/70 text-sm lg:text-base">
+                        {product.tagline}
+                      </p>
                     </div>
                   </div>
 
                   {/* Bottom accent line */}
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-[3px]"
-                    style={{ backgroundColor: product.accent }}
+                    className="absolute bottom-0 left-0 h-[3px] bg-[#C4785A]"
                     initial={{ width: 0 }}
                     animate={{ width: hoveredIndex === index ? '100%' : '0%' }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
