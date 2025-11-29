@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Phone, MapPin, ArrowRight, ArrowLeft, Sparkles, Sun, Layers, Blinds, TreePine } from "lucide-react"
+import { Check, Phone, MapPin, ArrowRight, ArrowLeft, Sparkles, Rows3, Layers, Blinds, TreePine } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -25,7 +25,7 @@ const blindTypes = [
   { 
     id: "zebra", 
     name: "Zebra", 
-    icon: Sun,
+    icon: Rows3,
     description: "Dynamic light control",
     image: "/new_images/zebra.jpg"
   },
@@ -178,17 +178,33 @@ export function NewsletterSection() {
             </div>
 
             {/* Service Areas */}
-            <div className="p-6 bg-[#1A1F1C] border border-[#2D3B35]">
+            <motion.div 
+              className="relative p-6 bg-gradient-to-br from-[#1A1F1C] to-[#0F1311] border border-[#8A9A5B]/30 shadow-[0_0_30px_rgba(138,154,91,0.1)]"
+              whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(138,154,91,0.15)" }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Corner accents */}
+              <div className="absolute top-0 left-0 w-8 h-8">
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#8A9A5B] to-transparent" />
+                <div className="absolute top-0 left-0 h-full w-[2px] bg-gradient-to-b from-[#8A9A5B] to-transparent" />
+              </div>
+              <div className="absolute bottom-0 right-0 w-8 h-8">
+                <div className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-[#8A9A5B] to-transparent" />
+                <div className="absolute bottom-0 right-0 h-full w-[2px] bg-gradient-to-t from-[#8A9A5B] to-transparent" />
+              </div>
+              
               <div className="flex items-center gap-2 mb-3">
-                <MapPin size={16} className="text-[#8A9A5B]" />
-                <span className="text-sm font-medium uppercase tracking-wider text-[#FAF7F2]/80">
+                <div className="w-8 h-8 bg-[#8A9A5B]/20 flex items-center justify-center">
+                  <MapPin size={16} className="text-[#8A9A5B]" />
+                </div>
+                <span className="text-sm font-medium uppercase tracking-wider text-[#FAF7F2]/90">
                   Service Areas
                 </span>
               </div>
-              <p className="text-[#FAF7F2]/50">
+              <p className="text-[#FAF7F2]/60 leading-relaxed">
                 Kelowna · West Kelowna · Lake Country · Peachland · Vernon · Penticton
               </p>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Column - Multi-Step Form */}
