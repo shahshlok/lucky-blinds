@@ -8,37 +8,7 @@
  * Warm terracotta meets cool sage with dramatic typography
  */
 
-@font-face {
-  font-family: 'Editorial New';
-  src: url('/fonts/PPEditorialNew-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
-@font-face {
-  font-family: 'Editorial New';
-  src: url('/fonts/PPEditorialNew-Italic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Editorial New';
-  src: url('/fonts/PPEditorialNew-Ultrabold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Editorial New';
-  src: url('/fonts/PPEditorialNew-UltraboldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
 
 :root {
   /* Core Palette - Okanagan Inspired */
@@ -130,7 +100,7 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-logo: 'Editorial New', Georgia, serif;
+  --font-logo: var(--font-logo);
 
   /* Spacing Scale */
   --space-1: 8px;

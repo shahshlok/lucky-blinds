@@ -27,7 +27,7 @@ export function Logo({ variant = "dark", className }: LogoProps) {
         className
       )}
     >
-      <span className="italic font-bold">Lucky</span>
+      <span className="italic">Lucky</span>
       {" "}
       <span className="not-italic">Blinds</span>
     </div>
