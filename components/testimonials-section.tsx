@@ -158,12 +158,35 @@ export function TestimonialsSection() {
                 {/* Divider */}
                 <div className="w-16 h-[1px] bg-[#8A9A5B] mx-auto mb-6" />
 
-                {/* Author info */}
+                {/* Author info with mobile navigation */}
                 <div className="flex flex-col items-center gap-3">
                   <StarRating rating={testimonials[activeIndex].rating} />
-                  <p className="font-display text-xl text-[#0F1311]">
-                    {testimonials[activeIndex].name}
-                  </p>
+                  
+                  {/* Mobile: Name with inline arrows */}
+                  <div className="flex items-center gap-4 md:gap-0">
+                    {/* Mobile prev arrow */}
+                    <button
+                      onClick={prev}
+                      className="md:hidden w-8 h-8 flex items-center justify-center text-[#5C7268] hover:text-[#8A9A5B] transition-colors"
+                      aria-label="Previous testimonial"
+                    >
+                      <ChevronLeft size={22} strokeWidth={2} />
+                    </button>
+                    
+                    <p className="font-display text-xl text-[#0F1311]">
+                      {testimonials[activeIndex].name}
+                    </p>
+                    
+                    {/* Mobile next arrow */}
+                    <button
+                      onClick={next}
+                      className="md:hidden w-8 h-8 flex items-center justify-center text-[#5C7268] hover:text-[#8A9A5B] transition-colors"
+                      aria-label="Next testimonial"
+                    >
+                      <ChevronRight size={22} strokeWidth={2} />
+                    </button>
+                  </div>
+                  
                   <p className="text-xs uppercase tracking-[0.2em] text-[#7A9284]">
                     Verified Customer
                   </p>
@@ -171,21 +194,27 @@ export function TestimonialsSection() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Navigation arrows */}
-            <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2">
+            {/* Navigation arrows - Desktop only (side positioned) */}
+            <div className="hidden md:block absolute left-8 top-1/2 -translate-y-1/2">
               <button
                 onClick={prev}
-                className="w-12 h-12 flex items-center justify-center border border-[#E8E0D4] bg-[#FAF7F2] text-[#5C7268] hover:border-[#8A9A5B] hover:text-[#8A9A5B] transition-colors"
+                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#8A9A5B]/60 hover:text-[#8A9A5B] transition-all duration-300"
               >
-                <ChevronLeft size={20} />
+                <span className="relative flex items-center justify-center w-full h-full">
+                  <span className="absolute inset-0 border border-[#8A9A5B]/20 group-hover:border-[#8A9A5B]/40 transition-colors duration-300" />
+                  <ChevronLeft size={18} strokeWidth={1.5} />
+                </span>
               </button>
             </div>
-            <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2">
+            <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2">
               <button
                 onClick={next}
-                className="w-12 h-12 flex items-center justify-center border border-[#E8E0D4] bg-[#FAF7F2] text-[#5C7268] hover:border-[#8A9A5B] hover:text-[#8A9A5B] transition-colors"
+                className="group w-12 h-12 flex items-center justify-center bg-transparent text-[#8A9A5B]/60 hover:text-[#8A9A5B] transition-all duration-300"
               >
-                <ChevronRight size={20} />
+                <span className="relative flex items-center justify-center w-full h-full">
+                  <span className="absolute inset-0 border border-[#8A9A5B]/20 group-hover:border-[#8A9A5B]/40 transition-colors duration-300" />
+                  <ChevronRight size={18} strokeWidth={1.5} />
+                </span>
               </button>
             </div>
           </div>
