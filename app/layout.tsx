@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { ScrollDetector } from "@/components/scroll-detector"
 
 import "./globals.css"
 
@@ -53,6 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden bg-[#FAF7F2] text-[#0F1311]">
+        <ScrollDetector />
         <div className="grain-overlay min-h-screen">
           {children}
         </div>

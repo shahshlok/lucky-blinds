@@ -218,21 +218,39 @@
     color: var(--color-cream);
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar - hidden by default, visible on scroll */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  html.is-scrolling {
+    scrollbar-color: var(--color-terracotta) var(--color-parchment);
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-parchment);
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-terracotta);
+    background: transparent;
     border-radius: 4px;
+    transition: background 0.3s ease;
   }
 
-  ::-webkit-scrollbar-thumb:hover {
+  html.is-scrolling::-webkit-scrollbar-track {
+    background: var(--color-parchment);
+  }
+
+  html.is-scrolling::-webkit-scrollbar-thumb {
+    background: var(--color-terracotta);
+  }
+
+  html.is-scrolling::-webkit-scrollbar-thumb:hover {
     background: var(--color-terracotta-deep);
   }
 
