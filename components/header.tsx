@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Menu, X, Phone } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 const navLinks = [
   { name: "Products", href: "#products" },
@@ -47,20 +48,7 @@ export function Header() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div>
-                <span className={cn(
-                  "font-display text-xl tracking-wide transition-colors duration-500",
-                  isScrolled ? "text-[#0F1311]" : "text-[#FAF7F2]"
-                )}>
-                  Lucky Blinds
-                </span>
-                <span className={cn(
-                  "block text-[10px] uppercase tracking-[0.2em] transition-colors duration-500",
-                  isScrolled ? "text-[#7A9284]" : "text-[#FAF7F2]/70"
-                )}>
-                  Okanagan Valley
-                </span>
-              </div>
+              <Logo variant={isScrolled ? "dark" : "light"} />
             </motion.a>
 
             {/* Desktop Navigation */}
