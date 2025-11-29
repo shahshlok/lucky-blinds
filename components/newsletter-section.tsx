@@ -1,20 +1,76 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Phone, User, Home, MessageSquare, MapPin, ArrowRight } from "lucide-react"
+import { Check, Phone, MapPin, ArrowRight, ArrowLeft, Sparkles, Sun, Layers, Blinds, TreePine } from "lucide-react"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+
+const blindTypes = [
+  { 
+    id: "cellular", 
+    name: "Cellular", 
+    icon: Layers,
+    description: "Energy efficient honeycomb",
+    image: "/new_images/cellular.jpg"
+  },
+  { 
+    id: "roller", 
+    name: "Roller", 
+    icon: Blinds,
+    description: "Sleek & minimal",
+    image: "/new_images/roller.jpg"
+  },
+  { 
+    id: "zebra", 
+    name: "Zebra", 
+    icon: Sun,
+    description: "Dynamic light control",
+    image: "/new_images/zebra.jpg"
+  },
+  { 
+    id: "faux-wood", 
+    name: "Faux Wood", 
+    icon: TreePine,
+    description: "Classic warmth",
+    image: "/new_images/faux.jpeg"
+  },
+]
+
+const contactTimes = [
+  { id: "morning", label: "Morning", time: "9am - 12pm" },
+  { id: "afternoon", label: "Afternoon", time: "12pm - 5pm" },
+  { id: "evening", label: "Evening", time: "5pm - 8pm" },
+]
 
 export function NewsletterSection() {
+  const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
+    blindType: "",
     name: "",
     phone: "",
     address: "",
+    contactTime: "",
     message: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, boolean>>({})
   const [focusedField, setFocusedField] = useState<string | null>(null)
+  const [completedFields, setCompletedFields] = useState<string[]>([])
+
+  const totalSteps = 3
+
+  useEffect(() => {
+    const completed: string[] = []
+    if (formData.blindType) completed.push("blindType")
+    if (formData.name.trim()) completed.push("name")
+    if (formData.phone.trim()) completed.push("phone")
+    if (formData.address.trim()) completed.push("address")
+    if (formData.contactTime) completed.push("contactTime")
+    if (formData.message.trim()) completed.push("message")
+    setCompletedFields(completed)
+  }, [formData])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -22,34 +78,49 @@ export function NewsletterSection() {
     setErrors((prev) => ({ ...prev, [name]: false }))
   }
 
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, "")
+    if (numbers.length <= 3) return numbers
+    if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`
+    return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`
+  }
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value)
+    setFormData((prev) => ({ ...prev, phone: formatted }))
+    setErrors((prev) => ({ ...prev, phone: false }))
+  }
+
+  const nextStep = () => {
+    if (step === 2) {
+      const newErrors: Record<string, boolean> = {}
+      if (!formData.name.trim()) newErrors.name = true
+      if (!formData.phone.trim() || formData.phone.replace(/\D/g, "").length < 10) newErrors.phone = true
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors)
+        return
+      }
+    }
+    setStep((prev) => Math.min(prev + 1, totalSteps))
+  }
+
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 1))
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const newErrors: Record<string, boolean> = {}
-
-    if (!formData.name.trim()) newErrors.name = true
-    if (!formData.phone.trim()) newErrors.phone = true
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors)
-      return
-    }
-
     setIsSubmitted(true)
   }
 
-  const inputClasses = (fieldName: string) => `
-    w-full pl-12 pr-4 py-4 
-    bg-transparent 
-    border-b-2 transition-all duration-300
-    text-[#0F1311] placeholder-[#7A9284] 
-    focus:outline-none
-    ${errors[fieldName] 
-      ? "border-[#B44D4D]" 
-      : focusedField === fieldName 
-        ? "border-[#8A9A5B]" 
-        : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
-    }
-  `
+  const selectBlindType = (id: string) => {
+    setFormData((prev) => ({ ...prev, blindType: id }))
+    setTimeout(() => nextStep(), 300)
+  }
+
+  const stepVariants = {
+    enter: (direction: number) => ({ x: direction > 0 ? 40 : -40, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (direction: number) => ({ x: direction < 0 ? 40 : -40, opacity: 0 }),
+  }
 
   return (
     <section className="py-24 lg:py-32 bg-[#0F1311] relative overflow-hidden" id="contact">
@@ -74,12 +145,12 @@ export function NewsletterSection() {
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#FAF7F2] leading-[1.1] mb-6">
-              Let's transform
+              Let&apos;s transform
               <span className="block italic font-light text-[#8A9A5B]">your space.</span>
             </h2>
             
             <p className="text-lg text-[#FAF7F2]/60 leading-relaxed mb-10 max-w-md">
-              Schedule a free in-home consultation. We'll measure your windows, 
+              Schedule a free in-home consultation. We&apos;ll measure your windows, 
               discuss your style, and provide a no-obligation quote.
             </p>
 
@@ -120,142 +191,495 @@ export function NewsletterSection() {
             </div>
           </motion.div>
 
-          {/* Right Column - Form */}
+          {/* Right Column - Multi-Step Form */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-[#FAF7F2] p-8 lg:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)]">
+            <div className="bg-[#FAF7F2] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)] overflow-hidden">
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
-                  <motion.form 
-                    key="form"
-                    onSubmit={handleSubmit} 
-                    className="space-y-6"
+                  <motion.div
+                    key="form-container"
                     initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
                   >
-                    <div className="mb-8">
-                      <h3 className="font-display text-2xl text-[#0F1311] mb-2">
-                        Request Your Quote
-                      </h3>
-                      <p className="text-[#7A9284] text-sm">
-                        Fill out the form and we'll be in touch within 24 hours.
-                      </p>
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none">
-                        <User size={18} className="text-[#7A9284]" />
-                      </div>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        onFocus={() => setFocusedField("name")}
-                        onBlur={() => setFocusedField(null)}
-                        placeholder="Your name *"
-                        className={inputClasses("name")}
+                    {/* Progress Bar */}
+                    <div className="h-1 bg-[#E8E0D4]">
+                      <motion.div
+                        className="h-full bg-[#8A9A5B]"
+                        initial={{ width: "0%" }}
+                        animate={{ width: `${(step / totalSteps) * 100}%` }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                       />
                     </div>
 
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none">
-                        <Phone size={18} className="text-[#7A9284]" />
+                    <div className="p-8 lg:p-10">
+                      {/* Step Indicator */}
+                      <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center gap-2">
+                          {[1, 2, 3].map((s) => (
+                            <motion.div
+                              key={s}
+                              className={cn(
+                                "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300",
+                                s === step
+                                  ? "bg-[#8A9A5B] text-[#FAF7F2]"
+                                  : s < step
+                                  ? "bg-[#8A9A5B]/20 text-[#8A9A5B]"
+                                  : "bg-[#E8E0D4] text-[#7A9284]"
+                              )}
+                              animate={{ scale: s === step ? 1.1 : 1 }}
+                            >
+                              {s < step ? <Check size={14} /> : s}
+                            </motion.div>
+                          ))}
+                        </div>
+                        <span className="text-xs uppercase tracking-wider text-[#7A9284]">
+                          Step {step} of {totalSteps}
+                        </span>
                       </div>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        onFocus={() => setFocusedField("phone")}
-                        onBlur={() => setFocusedField(null)}
-                        placeholder="Phone number *"
-                        className={inputClasses("phone")}
-                      />
+
+                      <form onSubmit={handleSubmit}>
+                        <AnimatePresence mode="wait" custom={step}>
+                          {/* Step 1: Blind Type Selection */}
+                          {step === 1 && (
+                            <motion.div
+                              key="step1"
+                              custom={1}
+                              variants={stepVariants}
+                              initial="enter"
+                              animate="center"
+                              exit="exit"
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              <h3 className="font-display text-2xl text-[#0F1311] mb-2">
+                                What catches your eye?
+                              </h3>
+                              <p className="text-[#7A9284] text-sm mb-6">
+                                Select a style you&apos;re interested in (or skip to continue)
+                              </p>
+
+                              <div className="grid grid-cols-2 gap-3 mb-6">
+                                {blindTypes.map((blind, index) => {
+                                  const Icon = blind.icon
+                                  return (
+                                    <motion.button
+                                      key={blind.id}
+                                      type="button"
+                                      onClick={() => selectBlindType(blind.id)}
+                                      className={cn(
+                                        "group relative overflow-hidden text-left transition-all duration-300",
+                                        "border-2 hover:border-[#8A9A5B]",
+                                        formData.blindType === blind.id
+                                          ? "border-[#8A9A5B] bg-[#8A9A5B]/5"
+                                          : "border-[#E8E0D4]"
+                                      )}
+                                      initial={{ opacity: 0, y: 20 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ delay: index * 0.1 }}
+                                      whileHover={{ scale: 1.02 }}
+                                      whileTap={{ scale: 0.98 }}
+                                    >
+                                      <div className="relative h-24 overflow-hidden">
+                                        <Image
+                                          src={blind.image}
+                                          alt={blind.name}
+                                          fill
+                                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/80 to-transparent" />
+                                      </div>
+                                      <div className="p-3">
+                                        <div className="flex items-center gap-2 mb-1">
+                                          <Icon size={14} className="text-[#8A9A5B]" />
+                                          <span className="font-medium text-[#0F1311]">{blind.name}</span>
+                                        </div>
+                                        <p className="text-xs text-[#7A9284]">{blind.description}</p>
+                                      </div>
+                                      {formData.blindType === blind.id && (
+                                        <motion.div
+                                          className="absolute top-2 right-2 w-6 h-6 bg-[#8A9A5B] rounded-full flex items-center justify-center"
+                                          initial={{ scale: 0 }}
+                                          animate={{ scale: 1 }}
+                                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                        >
+                                          <Check size={12} className="text-[#FAF7F2]" />
+                                        </motion.div>
+                                      )}
+                                    </motion.button>
+                                  )
+                                })}
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={nextStep}
+                                className="text-sm text-[#7A9284] hover:text-[#8A9A5B] transition-colors underline underline-offset-4"
+                              >
+                                Skip, I&apos;m not sure yet
+                              </button>
+                            </motion.div>
+                          )}
+
+                          {/* Step 2: Contact Info */}
+                          {step === 2 && (
+                            <motion.div
+                              key="step2"
+                              custom={2}
+                              variants={stepVariants}
+                              initial="enter"
+                              animate="center"
+                              exit="exit"
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              <h3 className="font-display text-2xl text-[#0F1311] mb-2">
+                                How can we reach you?
+                              </h3>
+                              <p className="text-[#7A9284] text-sm mb-6">
+                                We&apos;ll contact you within 24 hours
+                              </p>
+
+                              <div className="space-y-5">
+                                {/* Name Field */}
+                                <div className="relative">
+                                  <motion.label
+                                    className={cn(
+                                      "absolute left-0 transition-all duration-300 pointer-events-none",
+                                      focusedField === "name" || formData.name
+                                        ? "top-0 text-xs text-[#8A9A5B]"
+                                        : "top-4 text-[#7A9284]"
+                                    )}
+                                  >
+                                    Your name *
+                                  </motion.label>
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    onFocus={() => setFocusedField("name")}
+                                    onBlur={() => setFocusedField(null)}
+                                    className={cn(
+                                      "w-full pt-5 pb-2 bg-transparent border-b-2 transition-all duration-300 text-[#0F1311] focus:outline-none",
+                                      errors.name
+                                        ? "border-[#B44D4D]"
+                                        : focusedField === "name"
+                                        ? "border-[#8A9A5B]"
+                                        : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    )}
+                                  />
+                                  {completedFields.includes("name") && (
+                                    <motion.div
+                                      className="absolute right-0 top-4"
+                                      initial={{ scale: 0, rotate: -180 }}
+                                      animate={{ scale: 1, rotate: 0 }}
+                                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                    >
+                                      <Check size={16} className="text-[#8A9A5B]" />
+                                    </motion.div>
+                                  )}
+                                </div>
+
+                                {/* Phone Field */}
+                                <div className="relative">
+                                  <motion.label
+                                    className={cn(
+                                      "absolute left-0 transition-all duration-300 pointer-events-none",
+                                      focusedField === "phone" || formData.phone
+                                        ? "top-0 text-xs text-[#8A9A5B]"
+                                        : "top-4 text-[#7A9284]"
+                                    )}
+                                  >
+                                    Phone number *
+                                  </motion.label>
+                                  <input
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handlePhoneChange}
+                                    onFocus={() => setFocusedField("phone")}
+                                    onBlur={() => setFocusedField(null)}
+                                    className={cn(
+                                      "w-full pt-5 pb-2 bg-transparent border-b-2 transition-all duration-300 text-[#0F1311] focus:outline-none",
+                                      errors.phone
+                                        ? "border-[#B44D4D]"
+                                        : focusedField === "phone"
+                                        ? "border-[#8A9A5B]"
+                                        : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    )}
+                                  />
+                                  {completedFields.includes("phone") && formData.phone.replace(/\D/g, "").length >= 10 && (
+                                    <motion.div
+                                      className="absolute right-0 top-4"
+                                      initial={{ scale: 0, rotate: -180 }}
+                                      animate={{ scale: 1, rotate: 0 }}
+                                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                    >
+                                      <Check size={16} className="text-[#8A9A5B]" />
+                                    </motion.div>
+                                  )}
+                                </div>
+
+                                {/* Address Field */}
+                                <div className="relative">
+                                  <motion.label
+                                    className={cn(
+                                      "absolute left-0 transition-all duration-300 pointer-events-none",
+                                      focusedField === "address" || formData.address
+                                        ? "top-0 text-xs text-[#8A9A5B]"
+                                        : "top-4 text-[#7A9284]"
+                                    )}
+                                  >
+                                    Address (optional)
+                                  </motion.label>
+                                  <input
+                                    type="text"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    onFocus={() => setFocusedField("address")}
+                                    onBlur={() => setFocusedField(null)}
+                                    className="w-full pt-5 pb-2 bg-transparent border-b-2 border-[#E8E0D4] hover:border-[#8A9A5B]/50 focus:border-[#8A9A5B] transition-all duration-300 text-[#0F1311] focus:outline-none"
+                                  />
+                                  {completedFields.includes("address") && (
+                                    <motion.div
+                                      className="absolute right-0 top-4"
+                                      initial={{ scale: 0, rotate: -180 }}
+                                      animate={{ scale: 1, rotate: 0 }}
+                                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                    >
+                                      <Check size={16} className="text-[#8A9A5B]" />
+                                    </motion.div>
+                                  )}
+                                </div>
+
+                                {(errors.name || errors.phone) && (
+                                  <motion.p
+                                    className="text-sm text-[#B44D4D]"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                  >
+                                    Please fill in your name and a valid phone number
+                                  </motion.p>
+                                )}
+                              </div>
+                            </motion.div>
+                          )}
+
+                          {/* Step 3: Preferences */}
+                          {step === 3 && (
+                            <motion.div
+                              key="step3"
+                              custom={3}
+                              variants={stepVariants}
+                              initial="enter"
+                              animate="center"
+                              exit="exit"
+                              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              <h3 className="font-display text-2xl text-[#0F1311] mb-2">
+                                Almost there!
+                              </h3>
+                              <p className="text-[#7A9284] text-sm mb-6">
+                                When&apos;s the best time to call?
+                              </p>
+
+                              {/* Contact Time Selection */}
+                              <div className="flex gap-2 mb-6">
+                                {contactTimes.map((time) => (
+                                  <motion.button
+                                    key={time.id}
+                                    type="button"
+                                    onClick={() => setFormData((prev) => ({ ...prev, contactTime: time.id }))}
+                                    className={cn(
+                                      "flex-1 py-3 px-2 border-2 transition-all duration-300 text-center",
+                                      formData.contactTime === time.id
+                                        ? "border-[#8A9A5B] bg-[#8A9A5B]/10"
+                                        : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    )}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                  >
+                                    <span className="block text-sm font-medium text-[#0F1311]">{time.label}</span>
+                                    <span className="block text-xs text-[#7A9284]">{time.time}</span>
+                                  </motion.button>
+                                ))}
+                              </div>
+
+                              {/* Message Field */}
+                              <div className="relative mb-6">
+                                <motion.label
+                                  className={cn(
+                                    "absolute left-0 transition-all duration-300 pointer-events-none",
+                                    focusedField === "message" || formData.message
+                                      ? "top-0 text-xs text-[#8A9A5B]"
+                                      : "top-4 text-[#7A9284]"
+                                  )}
+                                >
+                                  Anything else we should know? (optional)
+                                </motion.label>
+                                <textarea
+                                  name="message"
+                                  value={formData.message}
+                                  onChange={handleChange}
+                                  onFocus={() => setFocusedField("message")}
+                                  onBlur={() => setFocusedField(null)}
+                                  rows={3}
+                                  className="w-full pt-5 pb-2 bg-transparent border-b-2 border-[#E8E0D4] hover:border-[#8A9A5B]/50 focus:border-[#8A9A5B] transition-all duration-300 text-[#0F1311] focus:outline-none resize-none"
+                                />
+                              </div>
+
+                              {/* Summary */}
+                              <div className="bg-[#F5F0E8] p-4 mb-6">
+                                <p className="text-xs uppercase tracking-wider text-[#7A9284] mb-2">Your request</p>
+                                <div className="space-y-1 text-sm">
+                                  {formData.blindType && (
+                                    <p className="text-[#0F1311]">
+                                      <span className="text-[#7A9284]">Interest:</span>{" "}
+                                      {blindTypes.find((b) => b.id === formData.blindType)?.name} Blinds
+                                    </p>
+                                  )}
+                                  <p className="text-[#0F1311]">
+                                    <span className="text-[#7A9284]">Name:</span> {formData.name}
+                                  </p>
+                                  <p className="text-[#0F1311]">
+                                    <span className="text-[#7A9284]">Phone:</span> {formData.phone}
+                                  </p>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+
+                        {/* Navigation Buttons */}
+                        <div className="flex gap-3 mt-8">
+                          {step > 1 && (
+                            <motion.button
+                              type="button"
+                              onClick={prevStep}
+                              className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-[#E8E0D4] text-[#7A9284] hover:border-[#8A9A5B] hover:text-[#8A9A5B] transition-all duration-300"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <ArrowLeft size={16} />
+                              Back
+                            </motion.button>
+                          )}
+                          
+                          {step < totalSteps ? (
+                            <motion.button
+                              type="button"
+                              onClick={nextStep}
+                              className="flex-1 group flex items-center justify-center gap-3 bg-[#8A9A5B] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#6F7D48] transition-colors duration-300"
+                              whileHover={{ scale: 1.01 }}
+                              whileTap={{ scale: 0.99 }}
+                            >
+                              Continue
+                              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                            </motion.button>
+                          ) : (
+                            <motion.button
+                              type="submit"
+                              className="flex-1 group flex items-center justify-center gap-3 bg-[#8A9A5B] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#6F7D48] transition-colors duration-300"
+                              whileHover={{ scale: 1.01 }}
+                              whileTap={{ scale: 0.99 }}
+                            >
+                              <Sparkles size={16} />
+                              Get My Free Quote
+                            </motion.button>
+                          )}
+                        </div>
+
+                        <p className="text-xs text-[#7A9284] text-center mt-4">
+                          By submitting, you agree to be contacted about your project.
+                        </p>
+                      </form>
                     </div>
-
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none">
-                        <Home size={18} className="text-[#7A9284]" />
-                      </div>
-                      <input
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                        onFocus={() => setFocusedField("address")}
-                        onBlur={() => setFocusedField(null)}
-                        placeholder="Address (optional)"
-                        className={inputClasses("address")}
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute top-4 left-0 pl-0 flex items-start pointer-events-none">
-                        <MessageSquare size={18} className="text-[#7A9284]" />
-                      </div>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        onFocus={() => setFocusedField("message")}
-                        onBlur={() => setFocusedField(null)}
-                        placeholder="Tell us about your project (optional)"
-                        rows={3}
-                        className={`${inputClasses("message")} resize-none`}
-                      />
-                    </div>
-
-                    {(errors.name || errors.phone) && (
-                      <motion.p
-                        className="text-sm text-[#B44D4D]"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        Please fill in your name and phone number
-                      </motion.p>
-                    )}
-
-                    <motion.button
-                      type="submit"
-                      className="group w-full flex items-center justify-center gap-3 bg-[#8A9A5B] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#6F7D48] transition-colors duration-300"
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
-                    >
-                      Request Free Quote
-                      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </motion.button>
-
-                    <p className="text-xs text-[#7A9284] text-center">
-                      By submitting, you agree to be contacted about your project.
-                    </p>
-                  </motion.form>
+                  </motion.div>
                 ) : (
                   <motion.div
                     key="success"
-                    className="text-center py-12"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative p-8 lg:p-10"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                   >
-                    <div className="w-20 h-20 bg-[#8A9A5B]/10 flex items-center justify-center mx-auto mb-6">
-                      <Check size={32} className="text-[#8A9A5B]" />
+                    {/* Celebration particles */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                      {[...Array(12)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-2 h-2 bg-[#8A9A5B]"
+                          style={{
+                            left: `${20 + Math.random() * 60}%`,
+                            top: `${20 + Math.random() * 60}%`,
+                            rotate: Math.random() * 360,
+                          }}
+                          initial={{ scale: 0, opacity: 1 }}
+                          animate={{
+                            scale: [0, 1, 0],
+                            opacity: [1, 1, 0],
+                            y: [0, -100 - Math.random() * 50],
+                            x: [0, (Math.random() - 0.5) * 100],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            delay: i * 0.1,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
+                        />
+                      ))}
                     </div>
-                    <h3 className="font-display text-2xl text-[#0F1311] mb-3">
-                      Thank you, {formData.name}!
-                    </h3>
-                    <p className="text-[#7A9284] mb-8 max-w-sm mx-auto">
-                      We've received your request. A Lucky Blinds specialist will contact 
-                      you within 24 hours to schedule your free consultation.
-                    </p>
-                    <div className="inline-flex items-center gap-2 text-sm text-[#8A9A5B]">
-                      <Phone size={14} />
-                      <span>Or call us now: (250) 123-4567</span>
+
+                    <div className="text-center py-8 relative">
+                      <motion.div
+                        className="w-24 h-24 bg-[#8A9A5B] flex items-center justify-center mx-auto mb-8"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.5 }}
+                        >
+                          <Check size={40} className="text-[#FAF7F2]" strokeWidth={3} />
+                        </motion.div>
+                      </motion.div>
+
+                      <motion.h3
+                        className="font-display text-3xl text-[#0F1311] mb-3"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        You&apos;re all set, {formData.name.split(" ")[0]}!
+                      </motion.h3>
+
+                      <motion.p
+                        className="text-[#7A9284] mb-8 max-w-sm mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        A Lucky Blinds specialist will reach out 
+                        {formData.contactTime && ` in the ${formData.contactTime}`} to schedule your free consultation.
+                      </motion.p>
+
+                      <motion.div
+                        className="inline-flex items-center gap-3 px-6 py-3 bg-[#F5F0E8]"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                      >
+                        <Phone size={16} className="text-[#8A9A5B]" />
+                        <span className="text-sm text-[#0F1311]">
+                          Can&apos;t wait? Call us: <strong>(778) 645-0024</strong>
+                        </span>
+                      </motion.div>
                     </div>
                   </motion.div>
                 )}
