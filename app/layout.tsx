@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, DM_Sans, Tenor_Sans } from 'next/font/google'
+import { Playfair_Display, DM_Sans, Prata } from 'next/font/google'
 import { ScrollDetector } from "@/components/scroll-detector"
 
 import "./globals.css"
@@ -21,8 +21,8 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 })
 
-// Logo font - humanist sans-serif with character
-const tenorSans = Tenor_Sans({
+// Logo font - elegant high-contrast serif
+const prata = Prata({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-logo",
@@ -62,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${tenorSans.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${prata.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden bg-[#FAF7F2] text-[#0F1311]">
         <ScrollDetector />
         <div className="grain-overlay min-h-screen">

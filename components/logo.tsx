@@ -22,14 +22,13 @@ export function Logo({ variant = "dark", className }: LogoProps) {
   return (
     <div
       className={cn(
-        "text-[1.5rem] tracking-[-0.01em] leading-none font-logo",
+        "flex flex-col items-center leading-none font-logo",
         colorConfig.text,
         className
       )}
     >
-      <span className="italic">Lucky</span>
-      {" "}
-      <span className="not-italic">Blinds</span>
+      <span className="text-[1.75rem] uppercase tracking-wider">Lucky</span>
+      <span className="text-[0.6rem] uppercase tracking-[0.3em] mt-1 opacity-90">Blinds</span>
     </div>
   );
 }
