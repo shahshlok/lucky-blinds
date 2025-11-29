@@ -1,9 +1,10 @@
 # Fonts
 
-Please upload the following font files to this directory:
+The following font files are currently installed in this directory:
 
-- `PPEditorialNew-Regular.woff2`
-- `PPEditorialNew-Italic.woff2`
+- `PPEditorialNew-Regular.otf`
+- `PPEditorialNew-Italic.otf`
+- `PPEditorialNew-Ultrabold.otf` (Mapped to font-weight: 700)
+- `PPEditorialNew-UltraboldItalic.otf` (Mapped to font-weight: 700 italic)
 
-These files are required for the "Editorial New" font to work correctly.
-Until these files are present, the website will fall back to Georgia.
+These files are sourced from the "PPEditorialNew-Free for personal use" directory.

@@ -20,14 +20,14 @@ export function Logo({ variant = "dark", className }: LogoProps) {
   const colorConfig = colors[variant];
 
   return (
-    <div 
+    <div
       className={cn(
         "text-[1.5rem] tracking-[-0.01em] leading-none font-logo",
         colorConfig.text,
         className
       )}
     >
-      <span className="italic">Lucky</span>
+      <span className="italic font-bold">Lucky</span>
       {" "}
       <span className="not-italic">Blinds</span>
     </div>
