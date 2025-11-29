@@ -160,14 +160,14 @@ export function OurCollection() {
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#0F1311] leading-[1.05] mb-6">
-              Four distinct styles,
+              Your view,
               <span className="block italic font-light text-[#C4785A] mt-1">
-                crafted for you.
+                your rules.
               </span>
             </h2>
             
             <p className="text-[#5C7268] text-base lg:text-lg leading-relaxed">
-              Timeless elegance for Okanagan homes. Measured, crafted, installed with care.
+              The Okanagan gives you the light. We help you decide what to do with it.
             </p>
           </motion.div>
         </div>
