@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { QuickLookModal } from "./quick-look-modal"
 import Image from "next/image"
 import { ArrowUpRight, Plus } from "lucide-react"
@@ -114,7 +114,7 @@ export function OurCollection() {
     offset: ["start end", "end start"],
   })
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50])
 
   const handleQuickLook = (product: Product) => {
     setSelectedProduct(product)
@@ -129,29 +129,19 @@ export function OurCollection() {
   return (
     <section 
       ref={containerRef}
-      className="relative bg-[#0F1311] overflow-hidden" 
+      className="relative bg-[#F5F0E8] overflow-hidden" 
       id="products"
     >
-      {/* Atmospheric Background */}
+      {/* Clean Background with subtle warm gradients */}
       <motion.div 
         className="absolute inset-0 pointer-events-none"
         style={{ y: backgroundY }}
       >
-        {/* Gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] rounded-full bg-[#C4785A]/[0.03] blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-[#7A9284]/[0.04] blur-[100px]" />
-        
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `linear-gradient(#FAF7F2 1px, transparent 1px), linear-gradient(90deg, #FAF7F2 1px, transparent 1px)`,
-            backgroundSize: '80px 80px'
-          }}
-        />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#C4785A]/[0.03] blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#7A9284]/[0.04] blur-[100px]" />
       </motion.div>
 
-      {/* Top Section - Header & Featured Preview */}
+      {/* Top Section - Header */}
       <div className="relative pt-24 lg:pt-32 pb-16 lg:pb-20">
         <div className="container-luxe">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
@@ -170,14 +160,14 @@ export function OurCollection() {
                 </span>
               </div>
               
-              <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#FAF7F2] leading-[1.05] mb-6">
+              <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#0F1311] leading-[1.05] mb-6">
                 Four distinct styles,
                 <span className="block italic font-light text-[#C4785A] mt-1">
                   crafted for you.
                 </span>
               </h2>
               
-              <p className="text-[#FAF7F2]/50 text-base lg:text-lg leading-relaxed max-w-md">
+              <p className="text-[#5C7268] text-base lg:text-lg leading-relaxed max-w-md">
                 Each blind type engineered for the unique light conditions and lifestyle 
                 of Okanagan homes. Select to explore.
               </p>
@@ -205,7 +195,7 @@ export function OurCollection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="font-display text-4xl lg:text-5xl text-[#FAF7F2] mb-1">
+                    <div className="font-display text-4xl lg:text-5xl text-[#0F1311] mb-1">
                       {stat.value}
                     </div>
                     <div className="text-xs uppercase tracking-[0.15em] text-[#7A9284]">
@@ -221,13 +211,13 @@ export function OurCollection() {
 
       {/* Divider */}
       <div className="container-luxe">
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#FAF7F2]/10 to-transparent" />
+        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#0F1311]/10 to-transparent" />
       </div>
 
       {/* Main Grid - Editorial Product Cards */}
       <div className="relative py-16 lg:py-24">
         <div className="container-luxe">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8">
             {blindTypes.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -240,7 +230,7 @@ export function OurCollection() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="relative aspect-[16/10] lg:aspect-[16/9] overflow-hidden bg-[#1A1F1D]">
+                <div className="relative aspect-[16/10] lg:aspect-[16/9] overflow-hidden">
                   {/* Image */}
                   <motion.div
                     className="absolute inset-0"
@@ -259,15 +249,15 @@ export function OurCollection() {
                   </motion.div>
 
                   {/* Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311] via-[#0F1311]/40 to-transparent opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1311]/90 via-[#0F1311]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0F1311]/40 via-transparent to-transparent" />
                   
                   {/* Colored accent overlay on hover */}
                   <motion.div 
                     className="absolute inset-0 mix-blend-overlay"
                     style={{ backgroundColor: product.accent }}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredIndex === index ? 0.15 : 0 }}
+                    animate={{ opacity: hoveredIndex === index ? 0.2 : 0 }}
                     transition={{ duration: 0.5 }}
                   />
 
@@ -277,9 +267,9 @@ export function OurCollection() {
                     <div className="flex items-start justify-between">
                       {/* Number */}
                       <motion.span 
-                        className="font-display text-6xl lg:text-7xl text-[#FAF7F2]/[0.08] leading-none select-none"
+                        className="font-display text-6xl lg:text-7xl text-[#FAF7F2]/10 leading-none select-none"
                         animate={{ 
-                          opacity: hoveredIndex === index ? 0.15 : 0.08,
+                          opacity: hoveredIndex === index ? 0.2 : 0.1,
                           x: hoveredIndex === index ? 8 : 0 
                         }}
                         transition={{ duration: 0.5 }}
@@ -299,7 +289,7 @@ export function OurCollection() {
                         <div 
                           className="w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500"
                           style={{ 
-                            backgroundColor: hoveredIndex === index ? product.accent : 'rgba(250, 247, 242, 0.1)',
+                            backgroundColor: hoveredIndex === index ? product.accent : 'rgba(250, 247, 242, 0.15)',
                           }}
                         >
                           <ArrowUpRight 
@@ -325,25 +315,22 @@ export function OurCollection() {
                         {product.swatches.map((swatch) => (
                           <div
                             key={swatch.name}
-                            className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/30 shadow-lg"
+                            className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/40 shadow-lg"
                             style={{ backgroundColor: swatch.color }}
                             title={swatch.name}
                           />
                         ))}
-                        <div className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/20 flex items-center justify-center bg-[#FAF7F2]/5">
+                        <div className="w-6 h-6 rounded-full border-2 border-[#FAF7F2]/20 flex items-center justify-center bg-[#FAF7F2]/10">
                           <Plus size={12} className="text-[#FAF7F2]/60" />
                         </div>
                       </motion.div>
 
-                      {/* Title & Tagline */}
+                      {/* Title & Tagline - BIGGER, BOLDER NAME */}
                       <div className="mb-4">
-                        <h3 className="font-display text-2xl lg:text-3xl text-[#FAF7F2] mb-1 leading-tight">
+                        <h3 className="font-display text-4xl lg:text-5xl text-[#FAF7F2] mb-2 leading-none tracking-tight">
                           {product.name}
-                          <span className="italic font-light text-[#FAF7F2]/60 ml-2">
-                            Blinds
-                          </span>
                         </h3>
-                        <p className="text-[#FAF7F2]/50 text-sm">
+                        <p className="text-[#FAF7F2]/70 text-sm lg:text-base">
                           {product.tagline}
                         </p>
                       </div>
@@ -353,15 +340,14 @@ export function OurCollection() {
                         className="flex flex-wrap gap-2"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ 
-                          opacity: hoveredIndex === index ? 1 : 0.7,
-                          y: hoveredIndex === index ? 0 : 0
+                          opacity: hoveredIndex === index ? 1 : 0.8,
                         }}
                         transition={{ duration: 0.4 }}
                       >
-                        {product.materials.map((material, i) => (
+                        {product.materials.map((material) => (
                           <span 
                             key={material}
-                            className="px-3 py-1.5 text-xs uppercase tracking-wider text-[#FAF7F2]/70 bg-[#FAF7F2]/[0.08] backdrop-blur-sm"
+                            className="px-3 py-1.5 text-xs uppercase tracking-wider text-[#FAF7F2]/80 bg-[#FAF7F2]/10 backdrop-blur-sm"
                           >
                             {material}
                           </span>
@@ -372,7 +358,7 @@ export function OurCollection() {
 
                   {/* Bottom accent line */}
                   <motion.div 
-                    className="absolute bottom-0 left-0 h-[2px]"
+                    className="absolute bottom-0 left-0 h-[3px]"
                     style={{ backgroundColor: product.accent }}
                     initial={{ width: 0 }}
                     animate={{ width: hoveredIndex === index ? '100%' : '0%' }}
@@ -396,12 +382,9 @@ export function OurCollection() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* CTA Card */}
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden bg-[#1A1F1D]">
               {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C4785A]/10 via-[#1A1F1D] to-[#7A9284]/10" />
-              
-              {/* Border */}
-              <div className="absolute inset-0 border border-[#FAF7F2]/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#C4785A]/10 via-transparent to-[#7A9284]/10" />
               
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-24 h-24">
