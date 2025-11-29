@@ -86,7 +86,7 @@ export function FeaturedProducts() {
         <Reveal>
           <div className="text-left mb-16">
             <h2 className="text-4xl text-foreground mb-4 lg:text-6xl">
-              Popular <span className="italic font-light">Products</span>
+              Our <span className="italic font-light">Products</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Discover our most requested window coverings, each crafted for style, durability, and the Okanagan
