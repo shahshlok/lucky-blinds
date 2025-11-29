@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Instagram, Facebook, Phone, Mail, MapPin, ArrowUpRight } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -50,38 +51,47 @@ export function Footer() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-[#8A9A5B] flex items-center justify-center">
-                <span className="font-display text-2xl text-[#FAF7F2]">L</span>
-              </div>
-              <div>
-                <span className="block font-display text-xl tracking-wide">Lucky Blinds</span>
-                <span className="block text-[10px] uppercase tracking-[0.2em] text-[#FAF7F2]/50">
-                  Okanagan Valley
-                </span>
-              </div>
+            <div className="mb-6">
+              <Logo variant="light" className="items-start" />
             </div>
             
-            <p className="text-[#FAF7F2]/60 leading-relaxed mb-8 max-w-sm">
-              Proudly serving the Okanagan Valley with premium window blinds and shades. 
-              Quality craftsmanship meets lakeside living.
+            <p className="text-[#FAF7F2]/60 leading-relaxed mb-6 max-w-sm">
+              Bespoke window coverings designed for the Okanagan lifestyle. 
+              Locally owned, professionally installed.
             </p>
+
+            {/* Service Areas */}
+            <div className="mb-8">
+              <p className="text-xs uppercase tracking-[0.15em] text-[#FAF7F2]/40 mb-2">
+                Serving
+              </p>
+              <p className="text-sm text-[#FAF7F2]/60">
+                Kelowna · West Kelowna · Lake Country · Peachland · Vernon · Penticton
+              </p>
+            </div>
 
             {/* Contact Info */}
             <div className="space-y-3 mb-8">
               <a
-                href="tel:+12501234567"
+                href="tel:+17786450024"
                 className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#8A9A5B] transition-colors group"
               >
                 <Phone size={16} />
-                <span>(250) 123-4567</span>
+                <span>(778) 645-0024</span>
               </a>
               <a
-                href="mailto:info@luckyblinds.ca"
+                href="tel:+12508999630"
+                className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#8A9A5B] transition-colors"
+              >
+                <Phone size={16} />
+                <span>(250) 899-9630</span>
+              </a>
+              <a
+                href="mailto:contactluckyblinds@gmail.com"
                 className="flex items-center gap-3 text-[#FAF7F2]/70 hover:text-[#8A9A5B] transition-colors"
               >
                 <Mail size={16} />
-                <span>info@luckyblinds.ca</span>
+                <span>contactluckyblinds@gmail.com</span>
               </a>
               <div className="flex items-center gap-3 text-[#FAF7F2]/70">
                 <MapPin size={16} />
