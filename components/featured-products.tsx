@@ -4,7 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { ProductCard } from "./product-card"
 import { QuickLookModal } from "./quick-look-modal"
-import { Reveal } from "./reveal"
+import { ArrowRight } from "lucide-react"
 
 const featuredProducts = [
   {
@@ -67,10 +67,10 @@ const featuredProducts = [
 ]
 
 export function FeaturedProducts() {
-  const [selectedProduct, setSelectedProduct] = useState<any>(null)
+  const [selectedProduct, setSelectedProduct] = useState<typeof featuredProducts[0] | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleQuickLook = (product: any) => {
+  const handleQuickLook = (product: typeof featuredProducts[0]) => {
     setSelectedProduct(product)
     setIsModalOpen(true)
   }
@@ -81,54 +81,112 @@ export function FeaturedProducts() {
   }
 
   return (
-    <section className="py-20 lg:py-32" id="featured-products">
-      <div className="container-custom">
-        <Reveal>
-          <div className="text-left mb-16">
-            <h2 className="text-4xl text-foreground mb-4 lg:text-6xl">
-              Popular <span className="italic font-light">Products</span>
+    <section className="py-24 lg:py-36 bg-[#FAF7F2] relative overflow-hidden" id="products">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F5F0E8] to-transparent opacity-50" />
+      
+      <div className="container-luxe relative">
+        {/* Section Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-16 lg:mb-24">
+          <motion.div 
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
+                Featured Collection
+              </span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#0F1311] leading-[1.1]">
+              Signature pieces for
+              <span className="block italic font-light text-[#C4785A]">every room.</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Discover our most requested window coverings, each crafted for style, durability, and the Okanagan
-              lifestyle.
+          </motion.div>
+          
+          <motion.div 
+            className="lg:col-span-5 flex flex-col justify-end"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="text-lg text-[#2D3B35]/80 leading-relaxed mb-6">
+              Our most requested window coverings, each crafted for style, durability, 
+              and the unique light of Okanagan living.
             </p>
-          </div>
-        </Reveal>
+            <motion.a
+              href="#collection"
+              className="group inline-flex items-center gap-3 text-[#C4785A] font-medium uppercase tracking-wider text-sm"
+              whileHover={{ x: 4 }}
+            >
+              View All Products
+              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </motion.a>
+          </motion.div>
+        </div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.3,
-              },
-            },
-          }}
-        >
-          {featuredProducts.map((product, index) => (
+        {/* Products Grid - Editorial Asymmetric Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* Large Featured Card */}
+          <motion.div
+            className="lg:col-span-7 lg:row-span-2"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ProductCard 
+              product={featuredProducts[0]} 
+              onQuickLook={handleQuickLook}
+              variant="featured"
+            />
+          </motion.div>
+
+          {/* Stacked Cards */}
+          {featuredProducts.slice(1).map((product, index) => (
             <motion.div
               key={product.id}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.8,
-                    ease: [0.21, 0.47, 0.32, 0.98],
-                  },
-                },
-              }}
+              className="lg:col-span-5"
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.15 * (index + 1), ease: [0.16, 1, 0.3, 1] }}
             >
-              <Reveal delay={index * 0.1}>
-                <ProductCard product={product} onQuickLook={handleQuickLook} />
-              </Reveal>
+              <ProductCard 
+                product={product} 
+                onQuickLook={handleQuickLook}
+                variant="compact"
+              />
             </motion.div>
           ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div 
+          className="mt-16 lg:mt-24 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 sm:gap-8 py-8 px-8 sm:px-12 bg-[#F5F0E8] border border-[#E8E0D4]">
+            <div className="text-center sm:text-left">
+              <p className="font-display text-xl text-[#0F1311] mb-1">Can't decide?</p>
+              <p className="text-[#7A9284] text-sm">Let us help you find the perfect match.</p>
+            </div>
+            <motion.a
+              href="#contact"
+              className="btn-primary whitespace-nowrap"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Book Consultation
+            </motion.a>
+          </div>
         </motion.div>
       </div>
 
