@@ -142,80 +142,39 @@ export function OurCollection() {
       </motion.div>
 
       {/* Top Section - Header */}
-      <div className="relative pt-24 lg:pt-32 pb-16 lg:pb-20">
+      <div className="relative pt-16 lg:pt-24 pb-10 lg:pb-12">
         <div className="container-luxe">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
-            {/* Left - Section Header */}
-            <motion.div 
-              className="lg:col-span-5"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <span className="block w-12 h-[1px] bg-[#C4785A]" />
-                <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
-                  The Collection
-                </span>
-              </div>
-              
-              <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#0F1311] leading-[1.05] mb-6">
-                Four distinct styles,
-                <span className="block italic font-light text-[#C4785A] mt-1">
-                  crafted for you.
-                </span>
-              </h2>
-              
-              <p className="text-[#5C7268] text-base lg:text-lg leading-relaxed max-w-md">
-                Each blind type engineered for the unique light conditions and lifestyle 
-                of Okanagan homes. Select to explore.
-              </p>
-            </motion.div>
-
-            {/* Right - Stats/Info */}
-            <motion.div 
-              className="lg:col-span-7 lg:pl-12"
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex flex-wrap gap-8 lg:gap-16 lg:justify-end">
-                {[
-                  { value: "4", label: "Signature Styles" },
-                  { value: "50+", label: "Color Options" },
-                  { value: "100%", label: "Custom Fit" },
-                ].map((stat, i) => (
-                  <motion.div 
-                    key={stat.label}
-                    className="text-center lg:text-right"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <div className="font-display text-4xl lg:text-5xl text-[#0F1311] mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs uppercase tracking-[0.15em] text-[#7A9284]">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+          <motion.div 
+            className="text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
+                The Collection
+              </span>
+              <span className="block w-12 h-[1px] bg-[#C4785A]" />
+            </div>
+            
+            <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-[#0F1311] leading-[1.05] mb-6">
+              Four distinct styles,
+              <span className="block italic font-light text-[#C4785A] mt-1">
+                crafted for you.
+              </span>
+            </h2>
+            
+            <p className="text-[#5C7268] text-base lg:text-lg leading-relaxed">
+              Timeless elegance for Okanagan homes. Measured, crafted, installed with care.
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="container-luxe">
-        <div className="h-[1px] bg-gradient-to-r from-transparent via-[#0F1311]/10 to-transparent" />
-      </div>
-
       {/* Main Grid - Editorial Product Cards */}
-      <div className="relative py-16 lg:py-24">
+      <div className="relative pb-16 lg:pb-24">
         <div className="container-luxe">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8">
             {blindTypes.map((product, index) => (
@@ -382,9 +341,9 @@ export function OurCollection() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* CTA Card */}
-            <div className="relative overflow-hidden bg-[#1A1F1D]">
+            <div className="relative overflow-hidden bg-[#E8E0D4] border border-[#D4C4A8]">
               {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#C4785A]/10 via-transparent to-[#7A9284]/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#C4785A]/5 via-transparent to-[#7A9284]/5" />
               
               {/* Corner accents */}
               <div className="absolute top-0 left-0 w-24 h-24">
@@ -399,11 +358,11 @@ export function OurCollection() {
               <div className="relative py-12 lg:py-16 px-8 lg:px-16">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                   <div className="text-center lg:text-left">
-                    <p className="font-display text-2xl lg:text-3xl text-[#FAF7F2] mb-2">
+                    <p className="font-display text-2xl lg:text-3xl text-[#0F1311] mb-2">
                       Need help choosing the{" "}
                       <span className="italic text-[#C4785A]">perfect style?</span>
                     </p>
-                    <p className="text-[#FAF7F2]/50 text-sm lg:text-base max-w-md">
+                    <p className="text-[#5C7268] text-sm lg:text-base max-w-md">
                       Our window treatment specialists bring samples directly to your home
                       for a personalized consultation.
                     </p>
