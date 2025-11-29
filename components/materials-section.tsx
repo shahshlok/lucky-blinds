@@ -144,7 +144,7 @@ export function MaterialsSection() {
                 const isActive = activeFeature === feature.id
                 
                 return (
-                  <motion.button
+                  <button
                     key={feature.id}
                     className={cn(
                       "w-full text-left p-5 lg:p-6 border-2 transition-all duration-500 group",
@@ -153,10 +153,6 @@ export function MaterialsSection() {
                         : "bg-transparent border-[#FAF7F2]/20 hover:border-[#FAF7F2]/40"
                     )}
                     onClick={() => setActiveFeature(feature.id)}
-                    initial={{ opacity: 0, x: -40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <div className="flex items-start gap-4">
                       <div className={cn(
@@ -209,7 +205,7 @@ export function MaterialsSection() {
                         </AnimatePresence>
                       </div>
                     </div>
-                  </motion.button>
+                  </button>
                 )
               })}
             </div>
