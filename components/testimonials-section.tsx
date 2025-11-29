@@ -82,17 +82,6 @@ export function TestimonialsSection() {
         <div className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-[#C9A962]/[0.04] blur-[120px]" />
       </motion.div>
 
-      {/* Large decorative quote */}
-      <motion.div
-        className="absolute top-12 left-1/2 -translate-x-1/2 opacity-[0.03] pointer-events-none"
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 0.03, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2 }}
-      >
-        <Quote size={400} strokeWidth={1} className="text-[#8A9A5B]" />
-      </motion.div>
-
       <div className="container-luxe relative z-10">
         {/* Header */}
         <motion.div
