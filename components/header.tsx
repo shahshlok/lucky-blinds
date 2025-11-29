@@ -38,7 +38,7 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="container-luxe">
+        <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
             <motion.a 

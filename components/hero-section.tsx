@@ -183,7 +183,7 @@ export function HeroSection() {
                 }}
             >
                 <div className="bg-gradient-to-t from-[#0F1311]/80 to-transparent pt-20 pb-8">
-                    <div className="container-luxe">
+                    <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                             {/* Trust Indicators */}
                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-[#FAF7F2]/70 text-sm">
