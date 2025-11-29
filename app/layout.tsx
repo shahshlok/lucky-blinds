@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, DM_Sans, Instrument_Serif } from 'next/font/google'
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { ScrollDetector } from "@/components/scroll-detector"
 
 import "./globals.css"
@@ -21,14 +21,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 })
 
-// Logo font - refined contemporary serif with beautiful contrast
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-logo",
-  weight: ["400"],
-  style: ["normal", "italic"],
-})
+
 
 export const metadata: Metadata = {
   title: "Lucky Blinds — Premium Window Coverings in Kelowna | Free Consultation",
@@ -61,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden bg-[#FAF7F2] text-[#0F1311]">
         <ScrollDetector />
         <div className="grain-overlay min-h-screen">
