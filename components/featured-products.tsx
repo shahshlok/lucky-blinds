@@ -13,7 +13,7 @@ const blindTypes = [
     fullName: "Cellular Blinds",
     tagline: "Energy efficiency meets elegance",
     price: "From $249",
-    image: "/modern-home-interior-honeycomb-cellular-shades-ene.jpg",
+    image: "/new_images/cellular.jpg",
     materials: ["Energy Efficient", "Cordless Safety"],
     features: ["Honeycomb insulation", "Noise reduction", "UV protection"],
     swatches: [
@@ -36,7 +36,7 @@ const blindTypes = [
     fullName: "Roller Blinds",
     tagline: "Sleek simplicity for modern spaces",
     price: "From $149",
-    image: "/elegant-white-roller-blinds-in-modern-living-room-.jpg",
+    image: "/new_images/roller.jpg",
     materials: ["Light Filtering", "Easy Clean Fabric"],
     features: ["Minimal design", "Easy maintenance", "Blackout options"],
     swatches: [
@@ -59,7 +59,7 @@ const blindTypes = [
     fullName: "Zebra Blinds",
     tagline: "Dynamic light at your fingertips",
     price: "From $199",
-    image: "/modern-roller-blinds-in-stylish-room-natural-light.jpg",
+    image: "/new_images/zebra.jpg",
     materials: ["Light Control", "Modern Design"],
     features: ["Adjustable opacity", "Contemporary style", "Dual fabric"],
     swatches: [
@@ -82,7 +82,7 @@ const blindTypes = [
     fullName: "Faux Wood Blinds",
     tagline: "Timeless warmth, lasting beauty",
     price: "From $179",
-    image: "/elegant-faux-wood-venetian-blinds-in-warm-kitchen.jpg",
+    image: "/new_images/faux.jpeg",
     materials: ["Moisture Resistant", '2" Slats'],
     features: ["Humidity resistant", "Classic aesthetic", "Durable finish"],
     swatches: [

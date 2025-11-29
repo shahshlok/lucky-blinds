@@ -30,7 +30,7 @@ const collections = [
     id: "cellular-shades",
     name: "Cellular",
     description: "Energy-efficient honeycomb",
-    image: "/modern-home-interior-honeycomb-cellular-shades-ene.jpg",
+    image: "/new_images/cellular.jpg",
     count: "6 styles",
   },
   {
