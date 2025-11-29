@@ -179,7 +179,7 @@ export function MaterialsSection() {
                           </h3>
                           <span className={cn(
                             "text-xs uppercase tracking-wider transition-colors duration-300",
-                            isActive ? "text-[#8A9A5B]" : "text-[#FAF7F2]/40"
+                            isActive ? "text-[#FAF7F2]/60" : "text-[#FAF7F2]/40"
                           )}>
                             {feature.tagline}
                           </span>
@@ -193,14 +193,11 @@ export function MaterialsSection() {
                               exit={{ opacity: 0, height: 0 }}
                               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                             >
-                              <p className="text-[#FAF7F2]/60 text-sm leading-relaxed mt-2 mb-4">
-                                {feature.description}
-                              </p>
-                              <div className="flex flex-wrap gap-3">
+                              <div className="flex flex-wrap gap-3 mt-3">
                                 {feature.benefits.map((benefit) => (
                                   <span 
                                     key={benefit}
-                                    className="inline-flex items-center gap-1.5 text-xs text-[#FAF7F2]/80 bg-[#FAF7F2]/5 px-3 py-1.5"
+                                    className="inline-flex items-center gap-1.5 text-xs text-[#FAF7F2]/80 bg-[#FAF7F2]/10 px-3 py-1.5"
                                   >
                                     <Check size={12} className="text-[#8A9A5B]" />
                                     {benefit}
@@ -227,32 +224,46 @@ export function MaterialsSection() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative aspect-[3/4] max-w-md ml-auto">
-              {/* Decorative frame */}
-              <div className="absolute -inset-6 border-[4px] border-[#8A9A5B]" />
-              <div className="absolute -inset-3 border-[3px] border-[#FAF7F2]/60" />
+              {/* Outer decorative frame - olive/sage green */}
+              <div className="absolute -inset-4 border-[3px] border-[#8A9A5B]/80" />
+              {/* Inner decorative frame - light cream/white */}
+              <div className="absolute -inset-1 border-[2px] border-[#FAF7F2]/50" />
               
-              {/* Glassy backdrop for readability */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-xl shadow-2xl" />
+              {/* Glassy backdrop with enhanced blur for readability */}
+              <div className="absolute inset-0 bg-[#FAF7F2]/5 backdrop-blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-white/10" />
               
               {/* Feature icon display */}
-              <div className="relative h-full flex flex-col items-center justify-center text-center p-12">
+              <div className="relative h-full flex flex-col items-center justify-center text-center p-8 lg:p-12">
                 <motion.div
                   key={activeFeature}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="max-w-sm"
                 >
-                  <div className="w-24 h-24 mx-auto mb-8 border-[3px] border-[#8A9A5B] flex items-center justify-center">
-                    <ActiveIcon size={40} strokeWidth={2.5} className="text-[#8A9A5B]" />
+                  {/* Glowing icon container */}
+                  <div className="relative w-20 h-20 mx-auto mb-10">
+                    {/* Soft outer glow */}
+                    <div className="absolute inset-0 bg-[#FAF7F2]/10 blur-xl scale-150" />
+                    {/* Icon square */}
+                    <div className="relative w-full h-full bg-[#FAF7F2]/10 border border-[#FAF7F2]/30 flex items-center justify-center">
+                      <ActiveIcon size={32} strokeWidth={1.5} className="text-[#FAF7F2]/80" />
+                    </div>
                   </div>
                   
-                  <h3 className="font-display text-4xl text-[#FAF7F2] mb-4">
+                  <h3 className="font-display text-3xl lg:text-4xl xl:text-5xl text-[#FAF7F2] mb-5 tracking-tight">
                     {activeFeatureData.name}
                   </h3>
                   
-                  <span className="block w-12 h-[1px] bg-[#8A9A5B] mx-auto mb-4" />
+                  {/* Accent line divider */}
+                  <span className="block w-10 h-[2px] bg-[#8A9A5B] mx-auto mb-8" />
                   
-                  <p className="text-lg italic text-[#FAF7F2]/60 font-display">
+                  <p className="text-base lg:text-lg text-[#FAF7F2]/75 leading-relaxed mb-6 max-w-xs mx-auto">
+                    {activeFeatureData.description}
+                  </p>
+                  
+                  <p className="text-lg lg:text-xl italic text-[#FAF7F2]/50 font-display tracking-wide">
                     {activeFeatureData.tagline}
                   </p>
                 </motion.div>
