@@ -154,10 +154,10 @@ export function MaterialsSection() {
                   <button
                     key={feature.id}
                     className={cn(
-                      "w-full text-left p-5 lg:p-6 border-2 transition-all duration-500 group",
+                      "w-full text-left p-5 lg:p-6 border transition-all duration-500 group backdrop-blur-xl bg-white/10 shadow-lg",
                       isActive 
-                        ? "bg-[#FAF7F2]/10 border-[#8A9A5B]" 
-                        : "bg-transparent border-[#FAF7F2]/20 hover:border-[#FAF7F2]/40"
+                        ? "border-[#8A9A5B] bg-white/15" 
+                        : "border-white/20 hover:border-white/40 hover:bg-white/15"
                     )}
                     onClick={() => setActiveFeature(feature.id)}
                   >
@@ -230,6 +230,9 @@ export function MaterialsSection() {
               {/* Decorative frame */}
               <div className="absolute -inset-6 border-[4px] border-[#8A9A5B]" />
               <div className="absolute -inset-3 border-[3px] border-[#FAF7F2]/60" />
+              
+              {/* Glassy backdrop for readability */}
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-xl shadow-2xl" />
               
               {/* Feature icon display */}
               <div className="relative h-full flex flex-col items-center justify-center text-center p-12">
