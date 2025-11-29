@@ -123,7 +123,7 @@ export function NewsletterSection() {
   }
 
   return (
-    <section className="py-24 lg:py-32 bg-[#0F1311] relative overflow-hidden" id="contact">
+    <section className="pt-24 pb-32 lg:pt-32 lg:pb-40 bg-[#0F1311] relative overflow-hidden" id="contact">
       {/* Decorative background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,154,91,0.08)_0%,_transparent_60%)]" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(201,169,98,0.05)_0%,_transparent_70%)]" />
@@ -702,6 +702,28 @@ export function NewsletterSection() {
               </AnimatePresence>
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Visual Separator */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <div className="container-luxe">
+          <div className="relative flex items-center justify-center py-8">
+            {/* Left line */}
+            <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#8A9A5B]/40 to-[#8A9A5B]/60" />
+            
+            {/* Center ornament */}
+            <div className="relative mx-6 flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-[#8A9A5B]/40 rotate-45" />
+              <div className="w-2 h-2 border border-[#8A9A5B]/60 rotate-45" />
+              <div className="w-3 h-3 border-2 border-[#8A9A5B] rotate-45" />
+              <div className="w-2 h-2 border border-[#8A9A5B]/60 rotate-45" />
+              <div className="w-1.5 h-1.5 bg-[#8A9A5B]/40 rotate-45" />
+            </div>
+            
+            {/* Right line */}
+            <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-[#8A9A5B]/40 to-[#8A9A5B]/60" />
+          </div>
         </div>
       </div>
     </section>
