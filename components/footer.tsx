@@ -8,23 +8,22 @@ export function Footer() {
 
   const footerLinks = {
     Products: [
-      { name: "Roller Blinds", href: "#" },
-      { name: "Venetian Blinds", href: "#" },
-      { name: "Vertical Blinds", href: "#" },
-      { name: "Cellular Shades", href: "#" },
-      { name: "Motorized Blinds", href: "#" },
+      { name: "Cellular Blinds", href: "#products" },
+      { name: "Roller Blinds", href: "#products" },
+      { name: "Zebra Blinds", href: "#products" },
+      { name: "Faux Wood Blinds", href: "#products" },
     ],
     Services: [
-      { name: "Free Consultation", href: "#" },
-      { name: "Professional Measurement", href: "#" },
-      { name: "Expert Installation", href: "#" },
-      { name: "Commercial Projects", href: "#" },
+      { name: "Free Consultation", href: "#contact" },
+      { name: "Professional Measurement", href: "#contact" },
+      { name: "Expert Installation", href: "#about" },
+      { name: "In-Home Estimates", href: "#contact" },
     ],
     Company: [
-      { name: "About Us", href: "#" },
-      { name: "Our Process", href: "#" },
-      { name: "Gallery", href: "#" },
-      { name: "Reviews", href: "#" },
+      { name: "About Us", href: "#about" },
+      { name: "Our Collection", href: "#products" },
+      { name: "Testimonials", href: "#testimonials" },
+      { name: "Contact", href: "#contact" },
     ],
   }
 
@@ -39,56 +38,6 @@ export function Footer() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#8A9A5B]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7A9284]/5 rounded-full blur-2xl" />
       
-      {/* Top CTA Section */}
-      <div className="border-b border-[#2D3B35]">
-        <div className="container-luxe py-16 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight mb-4">
-                Ready to elevate
-                <span className="block italic font-light text-[#8A9A5B]">your windows?</span>
-              </h2>
-              <p className="text-[#FAF7F2]/60 max-w-md">
-                Get in touch for a free consultation and discover the perfect 
-                window coverings for your Okanagan home.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 lg:justify-end"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <motion.a
-                href="tel:+12501234567"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#8A9A5B] text-[#FAF7F2] text-sm font-medium uppercase tracking-wider hover:bg-[#6F7D48] transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Phone size={16} />
-                (250) 123-4567
-              </motion.a>
-              <motion.a
-                href="mailto:info@luckyblinds.ca"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 border border-[#FAF7F2]/30 text-[#FAF7F2] text-sm font-medium uppercase tracking-wider hover:bg-[#FAF7F2]/10 hover:border-[#FAF7F2]/50 transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Mail size={16} />
-                Email Us
-              </motion.a>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="container-luxe py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">

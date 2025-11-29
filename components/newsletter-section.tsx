@@ -52,11 +52,10 @@ export function NewsletterSection() {
   `
 
   return (
-    <section className="py-24 lg:py-32 bg-[#FAF7F2] relative overflow-hidden" id="contact">
+    <section className="py-24 lg:py-32 bg-[#0F1311] relative overflow-hidden" id="contact">
       {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-[#F5F0E8] to-transparent" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 border border-[#E8E0D4] rounded-full -translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-20 right-20 w-32 h-32 border border-[#8A9A5B]/20 rounded-full" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,154,91,0.08)_0%,_transparent_60%)]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(201,169,98,0.05)_0%,_transparent_70%)]" />
       
       <div className="container-luxe relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -69,17 +68,17 @@ export function NewsletterSection() {
           >
             <div className="flex items-center gap-4 mb-6">
               <span className="block w-12 h-[1px] bg-[#8A9A5B]" />
-              <span className="text-xs uppercase tracking-[0.25em] text-[#7A9284] font-medium">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FAF7F2]/60 font-medium">
                 Free Consultation
               </span>
             </div>
             
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#0F1311] leading-[1.1] mb-6">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-[#FAF7F2] leading-[1.1] mb-6">
               Let's transform
               <span className="block italic font-light text-[#8A9A5B]">your space.</span>
             </h2>
             
-            <p className="text-lg text-[#2D3B35]/80 leading-relaxed mb-10 max-w-md">
+            <p className="text-lg text-[#FAF7F2]/60 leading-relaxed mb-10 max-w-md">
               Schedule a free in-home consultation. We'll measure your windows, 
               discuss your style, and provide a no-obligation quote.
             </p>
@@ -99,23 +98,23 @@ export function NewsletterSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="w-5 h-5 bg-[#8A9A5B]/10 flex items-center justify-center">
+                  <div className="w-5 h-5 bg-[#8A9A5B]/20 flex items-center justify-center">
                     <Check size={12} className="text-[#8A9A5B]" />
                   </div>
-                  <span className="text-[#2D3B35]">{point}</span>
+                  <span className="text-[#FAF7F2]/80">{point}</span>
                 </motion.div>
               ))}
             </div>
 
             {/* Service Areas */}
-            <div className="p-6 bg-[#F5F0E8] border border-[#E8E0D4]">
+            <div className="p-6 bg-[#1A1F1C] border border-[#2D3B35]">
               <div className="flex items-center gap-2 mb-3">
                 <MapPin size={16} className="text-[#8A9A5B]" />
-                <span className="text-sm font-medium uppercase tracking-wider text-[#2D3B35]">
+                <span className="text-sm font-medium uppercase tracking-wider text-[#FAF7F2]/80">
                   Service Areas
                 </span>
               </div>
-              <p className="text-[#7A9284]">
+              <p className="text-[#FAF7F2]/50">
                 Kelowna · West Kelowna · Lake Country · Peachland · Vernon · Penticton
               </p>
             </div>
@@ -128,7 +127,7 @@ export function NewsletterSection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="bg-white p-8 lg:p-10 shadow-[0_8px_40px_-8px_rgba(15,19,17,0.1)] border border-[#E8E0D4]">
+            <div className="bg-[#FAF7F2] p-8 lg:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)]">
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.form 
