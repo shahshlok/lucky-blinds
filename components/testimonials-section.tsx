@@ -134,10 +134,10 @@ export function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
                 className="text-center"
               >
                 {/* Quote icon */}
@@ -173,31 +173,27 @@ export function TestimonialsSection() {
 
             {/* Navigation arrows */}
             <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2">
-              <motion.button
+              <button
                 onClick={prev}
                 className="w-12 h-12 flex items-center justify-center border border-[#E8E0D4] bg-[#FAF7F2] text-[#5C7268] hover:border-[#8A9A5B] hover:text-[#8A9A5B] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 <ChevronLeft size={20} />
-              </motion.button>
+              </button>
             </div>
             <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2">
-              <motion.button
+              <button
                 onClick={next}
                 className="w-12 h-12 flex items-center justify-center border border-[#E8E0D4] bg-[#FAF7F2] text-[#5C7268] hover:border-[#8A9A5B] hover:text-[#8A9A5B] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 <ChevronRight size={20} />
-              </motion.button>
+              </button>
             </div>
           </div>
 
           {/* Dots indicator */}
           <div className="flex items-center justify-center gap-2 mt-8">
             {testimonials.map((_, index) => (
-              <motion.button
+              <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={cn(
@@ -206,8 +202,6 @@ export function TestimonialsSection() {
                     ? "w-8 bg-[#8A9A5B]"
                     : "w-2 bg-[#E8E0D4] hover:bg-[#D4C4A8]"
                 )}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
               />
             ))}
           </div>
@@ -216,10 +210,10 @@ export function TestimonialsSection() {
         {/* Mini testimonial cards */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 lg:mt-20"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5 }}
         >
           {testimonials.slice(0, 3).map((testimonial, index) => (
             <motion.div
@@ -231,11 +225,8 @@ export function TestimonialsSection() {
                   : "hover:border-[#D4C4A8]"
               )}
               onClick={() => setActiveIndex(index)}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
               whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
             >
               <StarRating rating={testimonial.rating} />
               <p className="font-display text-lg text-[#0F1311] mt-4 mb-3 leading-snug">
