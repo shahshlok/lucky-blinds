@@ -74,33 +74,34 @@ export function MaterialsSection() {
       className="relative min-h-screen flex items-center overflow-hidden" 
       id="about"
     >
-      {/* Background Images with Transitions */}
+      {/* Background Images with Transitions - All preloaded */}
       <div className="absolute inset-0 z-0">
-        {features.map((feature) => (
-          <AnimatePresence key={feature.id} mode="wait">
-            {feature.id === activeFeature && (
-              <motion.div
-                className="absolute inset-0"
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <motion.div 
-                  className="relative w-full h-full"
-                  style={{ scale: imageScale }}
-                >
-                  <Image
-                    src={feature.backgroundImage || "/placeholder.svg"}
-                    alt={`${feature.name} - window blinds feature`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 100vw"
-                  />
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        {features.map((feature, index) => (
+          <motion.div
+            key={feature.id}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: feature.id === activeFeature ? 1 : 0,
+              scale: feature.id === activeFeature ? 1 : 1.1
+            }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.div 
+              className="relative w-full h-full"
+              style={{ scale: imageScale }}
+            >
+              <Image
+                src={feature.backgroundImage || "/placeholder.svg"}
+                alt={`${feature.name} - window blinds feature`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index < 3}
+                loading={index < 3 ? "eager" : "lazy"}
+              />
+            </motion.div>
+          </motion.div>
         ))}
         
         {/* Gradient overlays */}

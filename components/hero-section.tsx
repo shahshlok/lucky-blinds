@@ -182,11 +182,11 @@ export function HeroSection() {
                     ease: [0.16, 1, 0.3, 1],
                 }}
             >
-                <div className="bg-gradient-to-t from-[#0F1311]/80 to-transparent pt-20 pb-8">
+                <div className="bg-gradient-to-t from-[#0F1311]/80 to-transparent pt-12 pb-4 md:pt-20 md:pb-8">
                     <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
                             {/* Trust Indicators */}
-                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-[#FAF7F2]/70 text-sm">
+                            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2 md:gap-8 text-[#FAF7F2]/70 text-sm">
                                 <div className="flex items-center gap-2">
                                     <div className="flex gap-0.5">
                                         {[...Array(5)].map((_, i) => (
