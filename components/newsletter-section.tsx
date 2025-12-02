@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Phone, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { sendContactEmail } from "@/app/actions"
 
 const contactTimes = []
 
@@ -16,6 +17,8 @@ export function NewsletterSection() {
     message: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
   const [errors, setErrors] = useState<Record<string, boolean>>({})
   const [focusedField, setFocusedField] = useState<string | null>(null)
   const [completedFields, setCompletedFields] = useState<string[]>([])
@@ -52,8 +55,9 @@ export function NewsletterSection() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setServerError(null)
     const newErrors: Record<string, boolean> = {}
     if (!formData.name.trim()) newErrors.name = true
     if (!formData.phone.trim() || formData.phone.replace(/\D/g, "").length < 10) newErrors.phone = true
@@ -64,7 +68,21 @@ export function NewsletterSection() {
       setErrors(newErrors)
       return
     }
-    setIsSubmitted(true)
+
+    setIsSubmitting(true)
+    try {
+      const result = await sendContactEmail(formData)
+      if (result.success) {
+        setIsSubmitted(true)
+        setFormData({ name: "", phone: "", email: "", message: "" })
+      } else {
+        setServerError(result.error || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setServerError("An unexpected error occurred. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   
@@ -270,18 +288,31 @@ export function NewsletterSection() {
                               Please fill in all required fields with valid information
                             </motion.p>
                           )}
+                          {serverError && (
+                            <motion.p
+                              className="text-sm text-[#B44D4D]"
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                            >
+                              {serverError}
+                            </motion.p>
+                          )}
                         </div>
 
                         {/* Submit Button */}
                         <div className="mt-8">
                           <motion.button
                             type="submit"
-                            className="w-full group flex items-center justify-center gap-3 bg-[#8A9A5B] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider hover:bg-[#6F7D48] transition-colors duration-300"
-                            whileHover={{ scale: 1.01 }}
-                            whileTap={{ scale: 0.99 }}
+                            disabled={isSubmitting}
+                            className={cn(
+                              "w-full group flex items-center justify-center gap-3 bg-[#8A9A5B] text-[#FAF7F2] py-4 font-medium text-sm uppercase tracking-wider transition-colors duration-300",
+                              isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-[#6F7D48]"
+                            )}
+                            whileHover={!isSubmitting ? { scale: 1.01 } : undefined}
+                            whileTap={!isSubmitting ? { scale: 0.99 } : undefined}
                           >
                             {/*<Sparkles size={16} />*/}
-                            Get My Free Quote
+                            {isSubmitting ? "Sending..." : "Get My Free Quote"}
                           </motion.button>
                         </div>
 
