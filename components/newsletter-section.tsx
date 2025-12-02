@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Phone, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { sendContactEmail } from "@/app/actions"
+import emailjs from '@emailjs/browser'
 
 const contactTimes = []
 
@@ -71,15 +71,29 @@ export function NewsletterSection() {
 
     setIsSubmitting(true)
     try {
-      const result = await sendContactEmail(formData)
-      if (result.success) {
-        setIsSubmitted(true)
-        setFormData({ name: "", phone: "", email: "", message: "" })
-      } else {
-        setServerError(result.error || "Something went wrong. Please try again.")
-      }
+      // Replace these with your actual EmailJS service, template, and public key
+      const serviceId = "YOUR_SERVICE_ID"
+      const templateId = "YOUR_TEMPLATE_ID"
+      const publicKey = "YOUR_PUBLIC_KEY"
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          to_name: "Lucky Blinds",
+          phone: formData.phone,
+          message: formData.message,
+          reply_to: formData.email,
+        },
+        publicKey
+      )
+
+      setIsSubmitted(true)
+      setFormData({ name: "", phone: "", email: "", message: "" })
     } catch (error) {
-      setServerError("An unexpected error occurred. Please try again later.")
+      console.error("EmailJS Error:", error)
+      setServerError("Failed to send message. Please try again later.")
     } finally {
       setIsSubmitting(false)
     }
