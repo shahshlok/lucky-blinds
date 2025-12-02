@@ -28,7 +28,6 @@ const blindTypes = [
     name: "Cellular",
     fullName: "Cellular Blinds",
     tagline: "Energy efficiency meets elegance",
-    price: "From $249",
     image: "/new_images/cellular.jpg",
     materials: ["Energy Efficient", "Cordless Safety"],
     features: ["Honeycomb insulation", "Noise reduction", "UV protection"],
@@ -51,7 +50,6 @@ const blindTypes = [
     name: "Roller",
     fullName: "Roller Blinds",
     tagline: "Sleek simplicity for modern spaces",
-    price: "From $149",
     image: "/new_images/roller.jpg",
     materials: ["Light Filtering", "Easy Clean Fabric"],
     features: ["Minimal design", "Easy maintenance", "Blackout options"],
@@ -74,7 +72,6 @@ const blindTypes = [
     name: "Zebra",
     fullName: "Zebra Blinds",
     tagline: "Dynamic light at your fingertips",
-    price: "From $199",
     image: "/new_images/zebra.jpg",
     materials: ["Light Control", "Modern Design"],
     features: ["Adjustable opacity", "Contemporary style", "Dual fabric"],
@@ -97,7 +94,6 @@ const blindTypes = [
     name: "Faux Wood",
     fullName: "Faux Wood Blinds",
     tagline: "Timeless warmth, lasting beauty",
-    price: "From $179",
     image: "/new_images/faux.jpeg",
     materials: ["Moisture Resistant", '2" Slats'],
     features: ["Humidity resistant", "Classic aesthetic", "Durable finish"],
@@ -323,8 +319,7 @@ export function OurCollection() {
                       <span className="italic text-[#8A9A5B]">perfect style?</span>
                     </p>
                     <p className="text-[#5C7268] text-sm lg:text-base max-w-md">
-                      Our window treatment specialists bring samples directly to your home
-                      for a personalized consultation.
+                      Choose from hundreds of samples and bring your vision to life with a personalized consultation.
                     </p>
                   </div>
                   

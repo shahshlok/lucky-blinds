@@ -19,7 +19,6 @@ interface QuickLookModalProps {
   product: {
     id: string
     name: string
-    price: string
     image: string
     materials: string[]
     swatches: { name: string; color: string }[]
@@ -174,7 +173,6 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
     "Custom-fitted to your windows",
     "Premium materials sourced locally",
     "Professional installation included",
-    "5-year warranty coverage",
   ]
 
   return (
@@ -289,17 +287,6 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                     {product.materials.join(" · ")}
                   </motion.p>
                 </div>
-
-                {/* Price */}
-                <motion.div
-                  className="mb-8 pb-6 border-b border-[#E8E0D4]"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.25 }}
-                >
-                  <span className="font-display text-2xl text-[#8A9A5B]">{product.price}</span>
-                  <span className="block text-xs text-[#7A9284] mt-1 tracking-wide">{product.dimensions}</span>
-                </motion.div>
 
                 {/* Type Selection */}
                 {hasTypes && selectedType && (
@@ -490,7 +477,7 @@ export function QuickLookModal({ product, isOpen, onClose }: QuickLookModalProps
                     className="flex items-center justify-center gap-2 w-full py-3 text-[#7A9284] text-xs tracking-wide hover:text-[#8A9A5B] transition-colors"
                   >
                     <Phone size={12} />
-                    Or call: (250) 123-4567
+                    Or call: (778) 645-0024
                   </a>
                 </motion.div>
               </div>

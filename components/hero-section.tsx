@@ -104,7 +104,7 @@ export function HeroSection() {
                                     ease: [0.16, 1, 0.3, 1],
                                 }}
                             >
-                                Crafted for
+                                Window coverings
                             </motion.span>
                             <motion.span
                                 className="block text-display-xl leading-[0.9] italic font-light text-[#8A9A5B]"
@@ -116,7 +116,7 @@ export function HeroSection() {
                                     ease: [0.16, 1, 0.3, 1],
                                 }}
                             >
-                                lakeside living.
+                                for Okanagan.
                             </motion.span>
                         </motion.h1>
 
@@ -131,9 +131,7 @@ export function HeroSection() {
                                 ease: [0.16, 1, 0.3, 1],
                             }}
                         >
-                            Bespoke window coverings designed for the Okanagan
-                            lifestyle. From sun-drenched mornings to vineyard
-                            sunsets.
+                            Because quality matters 
                         </motion.p>
 
                         {/* CTA Buttons */}
@@ -187,7 +185,7 @@ export function HeroSection() {
                         <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
                             {/* Trust Indicators */}
                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2 md:gap-8 text-[#FAF7F2]/70 text-sm">
-                                <div className="flex items-center gap-2">
+                                {/*<div className="flex items-center gap-2">
                                     <div className="flex gap-0.5">
                                         {[...Array(5)].map((_, i) => (
                                             <Star
@@ -198,11 +196,18 @@ export function HeroSection() {
                                         ))}
                                     </div>
                                     <span>5.0 Rating</span>
-                                </div>
+                                </div>*/}
+                                {/*<span className="hidden md:block w-[1px] h-4 bg-[#FAF7F2]/20" />*/}
+                                <span>Kelowna</span>
                                 <span className="hidden md:block w-[1px] h-4 bg-[#FAF7F2]/20" />
-                                <span>Free In-Home Estimates</span>
+                                <span>Vernon </span>
                                 <span className="hidden md:block w-[1px] h-4 bg-[#FAF7F2]/20" />
-                                <span>Professional Installation</span>
+                                <span>Penticton</span>
+                                <span className="hidden md:block w-[1px] h-4 bg-[#FAF7F2]/20" />
+                                <span>Lake Country</span>
+                                <span className="hidden md:block w-[1px] h-4 bg-[#FAF7F2]/20" />
+                                <span>West Kelowna</span>
+                                
                             </div>
 
                             {/* Scroll Indicator */}

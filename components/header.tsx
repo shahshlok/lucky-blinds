@@ -79,7 +79,7 @@ export function Header() {
             {/* CTA + Mobile Menu */}
             <div className="flex items-center gap-4">
               <motion.a
-                href="tel:+12501234567"
+                href="tel:+17786450024"
                 className={cn(
                   "hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-medium uppercase tracking-wider transition-colors duration-300 relative overflow-hidden group",
                   isScrolled
@@ -102,7 +102,7 @@ export function Header() {
                 <span className={cn(
                   "relative z-10 transition-colors duration-300",
                   isScrolled ? "group-hover:text-[#8A9A5B]" : "group-hover:text-[#FAF7F2]"
-                )}>Free Quote</span>
+                )}>Call Now</span>
               </motion.a>
 
               {/* Mobile menu button */}
@@ -172,7 +172,7 @@ export function Header() {
                   transition={{ duration: 0.4, delay: 0.5 }}
                 >
                   <a
-                    href="tel:+12501234567"
+                    href="tel:+17786450024"
                     className="flex items-center justify-center gap-2 w-full py-4 bg-[#8A9A5B] text-[#FAF7F2] font-medium uppercase tracking-wider text-sm"
                   >
                     <Phone size={16} />
