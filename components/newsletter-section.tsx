@@ -63,7 +63,7 @@ export function NewsletterSection() {
     if (!formData.phone.trim() || formData.phone.replace(/\D/g, "").length < 10) newErrors.phone = true
     if (!formData.email.trim() || !validateEmail(formData.email)) newErrors.email = true
     if (!formData.message.trim()) newErrors.message = true
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
@@ -71,10 +71,20 @@ export function NewsletterSection() {
 
     setIsSubmitting(true)
     try {
-      // Replace these with your actual EmailJS service, template, and public key
-      const serviceId = "YOUR_SERVICE_ID"
-      const templateId = "YOUR_TEMPLATE_ID"
-      const publicKey = "YOUR_PUBLIC_KEY"
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      // Validate environment variables
+      if (!serviceId || serviceId.includes('your_service_id')) {
+        throw new Error('EmailJS Service ID is not configured. Please check your .env file.')
+      }
+      if (!templateId || templateId.includes('your_template_id')) {
+        throw new Error('EmailJS Template ID is not configured. Please check your .env file.')
+      }
+      if (!publicKey || publicKey.includes('your_public_key')) {
+        throw new Error('EmailJS Public Key is not configured. Please check your .env file.')
+      }
 
       await emailjs.send(
         serviceId,
@@ -91,26 +101,40 @@ export function NewsletterSection() {
 
       setIsSubmitted(true)
       setFormData({ name: "", phone: "", email: "", message: "" })
-    } catch (error) {
+    } catch (error: any) {
       console.error("EmailJS Error:", error)
-      setServerError("Failed to send message. Please try again later.")
+
+      // Provide user-friendly error messages
+      let errorMessage = "Failed to send message. Please try again later."
+
+      if (error?.message && error.message.includes('not configured')) {
+        errorMessage = "Email service is not configured. Please contact support."
+      } else if (error?.status === 400) {
+        errorMessage = "Invalid email configuration. Please contact support."
+      } else if (error?.status === 401 || error?.status === 403) {
+        errorMessage = "Email service authentication failed. Please contact support."
+      } else if (error?.text) {
+        errorMessage = `Email error: ${error.text}`
+      }
+
+      setServerError(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  
+
 
   return (
     <section className="py-24 lg:py-32 bg-[#0F1311] relative overflow-hidden" id="contact">
       {/* Decorative background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(138,154,91,0.08)_0%,_transparent_60%)]" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[radial-gradient(circle,_rgba(201,169,98,0.05)_0%,_transparent_70%)]" />
-      
+
       <div className="container-luxe relative">
         <div className="max-w-2xl mx-auto">
           <motion.div
-          initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -157,8 +181,8 @@ export function NewsletterSection() {
                                 errors.name
                                   ? "border-[#B44D4D]"
                                   : focusedField === "name"
-                                  ? "border-[#8A9A5B]"
-                                  : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    ? "border-[#8A9A5B]"
+                                    : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
                               )}
                             />
                             {completedFields.includes("name") && (
@@ -197,8 +221,8 @@ export function NewsletterSection() {
                                 errors.phone
                                   ? "border-[#B44D4D]"
                                   : focusedField === "phone"
-                                  ? "border-[#8A9A5B]"
-                                  : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    ? "border-[#8A9A5B]"
+                                    : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
                               )}
                             />
                             {completedFields.includes("phone") && formData.phone.replace(/\D/g, "").length >= 10 && (
@@ -237,8 +261,8 @@ export function NewsletterSection() {
                                 errors.email
                                   ? "border-[#B44D4D]"
                                   : focusedField === "email"
-                                  ? "border-[#8A9A5B]"
-                                  : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    ? "border-[#8A9A5B]"
+                                    : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
                               )}
                             />
                             {completedFields.includes("email") && validateEmail(formData.email) && (
@@ -277,8 +301,8 @@ export function NewsletterSection() {
                                 errors.message
                                   ? "border-[#B44D4D]"
                                   : focusedField === "message"
-                                  ? "border-[#8A9A5B]"
-                                  : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
+                                    ? "border-[#8A9A5B]"
+                                    : "border-[#E8E0D4] hover:border-[#8A9A5B]/50"
                               )}
                             />
                             {completedFields.includes("message") && (
